@@ -35,7 +35,7 @@ const Orders = () => {
 	function handleFilterBy(key: string) {
 		setShowFL((p) => !p);
 
-		const result = orderList.filter((i, a) => i.status == key);
+		const result = orderList.filter((i: { status: string; }, a: any) => i.status == key);
 
 		if (result) {
 			setFilterResult(result);

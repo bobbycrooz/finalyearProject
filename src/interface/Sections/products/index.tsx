@@ -151,6 +151,7 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 					// }}
 					tag={'div'}
 				>
+					{/* @ts-ignore */}
 					{products.map((item, index) => (
 						<SwiperSlide key={index + 'yter'} className="rounded-md shadow  relative">
 							<Link href={`/product?id=${item._id}`}>

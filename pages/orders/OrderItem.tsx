@@ -145,7 +145,7 @@ const OrderItem = ({ collapse, item, confirm }: { collapse?: boolean; item: any;
 					</div>
 				</div>
 				<div className="btn_box w-full">
-					{item.status == 'created' ? (
+					{item?.status == 'created' ? (
 						<Button
 							onClick={confirm}
 							isLoading={false}

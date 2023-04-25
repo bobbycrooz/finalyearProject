@@ -27,7 +27,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 		setUpdatting(false);
 	}
 
-	console.log(item);
+	// console.log(item);
 	
 
 	return (
@@ -46,7 +46,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 
 					<div className="item_details">
 						<h1 className="text-lg font-std-medium text-left capitalize">
-							{item.productID.name}
+							{item?.productID.name}
 						</h1>
 
 						<p className="text-sm font-std-book capitalize">
@@ -62,14 +62,14 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 
 						<div className="rounded flex middle  shadow-md mt-1">
 							<div className="button px-2 border-l border-y rounded-l">-</div>
-							<div className="button border border-gray px-2">{item.quantity}</div>
+							<div className="button border border-gray px-2">{item?.quantity}</div>
 							<div className="button px-2 border-r border-y rounded-r">+</div>
 						</div>
 					</div>
 
 					<div className="price_box">
-						<h1 className="text-lg font-std-medium ">#{item.total}</h1>
-						<p className="text-xs font-std-book">#{item.price} x {item.quantity} items</p>
+						<h1 className="text-lg font-std-medium ">#{item?.total}</h1>
+						<p className="text-xs font-std-book">#{item?.price} x {item?.quantity} items</p>
 					</div>
 				</div>
 

@@ -14,33 +14,26 @@ import DashboardLayout from 'src/interface/layout';
 import ProductCarousel from '@components/productCarousel';
 import Related from '@sections/relatedProduct';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import {IoMdFlash} from 'react-icons/io'
+import { IoMdFlash } from 'react-icons/io';
 import { useProducts } from '@contexts/productContext';
 const Mycart = () => {
 	const [val, setVal] = React.useState(1);
 	const [liked, setLiked] = React.useState(false);
-	const [currentProduct, setCurrentProduct] = React.useState();
+	const [currentProduct, setCurrentProduct] = React.useState<any>();
 	const { push, query } = useRouter();
 	const { setProducts, products } = useProducts();
 
-
-
 	// get product full details
-	function fetchProductDetails(productId?:string) {
-		const currentItem = products.filter(((i,a) => i._id === productId))
-		if(currentItem.length > 0){
-			setCurrentProduct(currentItem[0])
+	function fetchProductDetails(productId?: string) {
+		const currentItem = products.filter((i: { _id: string | undefined }, a: any) => i._id === productId);
+		if (currentItem.length > 0) {
+			setCurrentProduct(currentItem[0]);
 		}
-
-		
-		
 	}
 
 	useEffect(() => {
-		fetchProductDetails(String(query.id))
-	}, [])
-
-	
+		fetchProductDetails(String(query.id));
+	}, []);
 
 	return (
 		<div className="bg-admin product-item w-screen relative">
@@ -112,7 +105,7 @@ const Mycart = () => {
 				</div>
 			</div>
 
-{/* PRODUCT OPERAATIONS */}
+			{/* PRODUCT OPERAATIONS */}
 			<div className="section-card my-4 between">
 				<div className="grouped_action flex middle space-x-3">
 					<div className="small_box minus">+</div>
@@ -129,9 +122,7 @@ const Mycart = () => {
 			<div className="section-card my-4 p-4">
 				<Text type="title" text={'Specifications'} />
 
-				<p className="text my-2">
-					{currentProduct?.description}
-				</p>
+				<p className="text my-2">{currentProduct?.description}</p>
 
 				<ul className="conditions list-disc ml-6 my-2">
 					<li>Good conditons</li>
