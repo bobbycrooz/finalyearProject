@@ -1,0 +1,46 @@
+.billing {
+	// color: #13052af0;
+	&_details_card {
+		@apply bg-white shadow rounded-md h-auto;
+		&-head {
+			width: 100%;
+			height: 50px;
+			@apply rounded-t-lg centered text-white;
+			&.yellow {
+				@apply bg-yellow-400;
+			}
+
+			&.green {
+				@apply bg-green-400;
+			}
+		}
+
+		&-body {
+			width: 100%;
+			height: 100%;
+			@apply rounded-b-lg pb-2;
+
+			.row {
+				@apply flex justify-between items-center p-2 px-4;
+			}
+		}
+
+		button {
+			@apply rounded-lg w-full p-2 px-4 font-std-bold text-black;
+		}
+	}
+}
+
+.payment_method {
+	.options {
+		@apply bg-white   flex justify-around mt-6;
+
+		&-card {
+			@apply text-center text-gray-400 flex flex-col justify-center bg-white rounded-xl shadow-lg w-[150px] h-[150px];
+
+			&.active {
+				@apply border border-blue-400 text-blue-400;
+			}
+		}
+	}
+}

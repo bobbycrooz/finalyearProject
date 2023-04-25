@@ -1,0 +1,68 @@
+.custom-input {
+    // @apply ;
+
+    // &.price{
+    //     @apply  br;
+
+    // }
+
+    &-filed-container {
+        @apply w-full relative h-14 flex items-center;
+        &.textarea{
+        @apply h-20;
+
+        }
+
+        &.price {
+            @apply flex middle border rounded-md border-gray-200;
+        }
+
+        .icon-box {
+            @apply centered rounded-l  h-full w-[50px]  border-none;
+        }
+
+        .input {
+            @apply w-full mt-2 h-full border border-gray-200 px-4 p-2 centered rounded-md;
+
+            &.price {
+                @apply mt-0 rounded-r border-none;
+            }
+
+            &.textarea {
+                @apply h-full;
+                // height: 70px;
+            }
+
+            &:focus {
+                outline: 1px solid blue;
+                box-shadow: 0px 0px 4px 2px #6710f265;
+            }
+
+            &.error {
+                outline: .5px solid $red;
+                box-shadow: 0px 0px 4px 2px $red;
+                animation: errorJiggle;
+                animation-duration: 0.2s;
+                animation-iteration-count: 2;
+            }
+        }
+    }
+}
+
+@keyframes errorJiggle {
+    0% {
+        transform: translatex(0px);
+    }
+
+    40% {
+        transform: translatex(9px);
+    }
+
+    80% {
+        transform: translatex(-9px);
+    }
+
+    100% {
+        transform: translatex(0px);
+    }
+}

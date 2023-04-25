@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'std-bold' ;
+    src: url(CircularStd-Bold.ttf);
+}
+
+@font-face {
+    font-family: 'std-book';
+    src: url(CircularStd-Book.ttf);
+}
+
+@font-face {
+    font-family: 'std-medium';
+    src: url(CircularStd-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'std-black';
+    src: url(CircularStd-Black.ttf);
+}
+
+$bold: 'std-bold';
+$medium: 'std-medium';
+$black: 'std-black';
+$book: 'std-book';

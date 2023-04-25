@@ -1,0 +1,36 @@
+// .my-cart {
+// }
+
+.cart_list_page {
+    .cart_list_container {
+        margin-top: 74px;
+        @apply h-auto py-4 bg-gray-200 rounded-md w-full;
+
+        .dotted-line {
+            border: 0.5px dashed #7171714f;
+        }
+    }
+
+    .coupon_container {
+        @apply h-auto py-4 p-2  bg-white shadow-sm rounded-md w-full;
+
+        .filed_input-container {
+            @apply  flex relative border border-gray-200 middle rounded-md w-full ; 
+            .apply-input {
+                @apply p-2 text-lg rounded-l-md w-full h-full bg-gray-200;
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            .apply-btn {
+                @apply bg-[#6610F2] rounded-r-md h-full p-2 text-gray-50 px-5;
+            }
+        }
+    }
+
+    .checkout_container{
+        @apply h-auto py-4 p-2  between shadow-sm bg-gray-50 rounded-md w-full;
+
+    }
+}

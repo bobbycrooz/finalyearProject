@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// partials
+@import '../fonts/font';
+@import 'utils/animate';
+@import 'utils/colors';
+@import 'utils/random';
+@import 'utils/loader';
+
+// components
+@import 'components/modals';
+@import 'components/newArrival';
+@import 'components/collections';
+@import 'components/top-nav';
+@import 'components/products';
+@import 'components/top-bottom-nav';
+@import 'components/carousel';
+@import 'components/cartItem';
+
+// widgets
+@import 'widgets/custom-input';
+@import 'widgets/_typography';
+@import 'widgets/button';
+@import 'widgets/toggler';
+
+// pages
+@import 'pages/admin';
+@import 'pages/add-new';
+@import 'pages/cart';
+@import 'pages/product-item';
+@import 'pages/billing';
+@import 'pages/category';
+
+// visit partials/_random.scss for other utilities style
+
+body {
+	background: White;
+	color: $black;
+	transition: all 0.1s linear;
+}
+
+// HOMEPAGE -------------------------------
+.homepage {
+	@apply bg-gray-100 pb-[68px] pt-[69px] w-screen relative;
+}
+
+//adver banner
+.second-advert-banner {
+	background-image: url(../images/advert-banner/image.png);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+// product-display-card
+.display_product-card {
+	// border: 1px solid red;
+	.cto_btns {
+		transition: all 0.2s ease;
+		height: 0;
+
+		& > div {
+			visibility: hidden;
+		}
+	}
+
+	&:hover {
+		.cto_btns {
+			transition: all 0.2s ease;
+
+			height: 2rem;
+
+			& > div {
+				visibility: visible;
+			}
+		}
+	}
+}
+
+// STORE----------------------------
+.stores {
+	.store_card-body {
+		background-image: url('/carousel/store1.jpg');
+		background-position: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+}

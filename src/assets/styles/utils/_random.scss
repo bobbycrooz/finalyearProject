@@ -1,0 +1,67 @@
+.random {
+
+}
+
+
+.br {
+	@apply border border-red-500;
+}
+
+.bg {
+	@apply border border-green-500;
+}
+
+
+
+.centered {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.middle {
+	@apply flex items-center;
+}
+
+.stack {
+	@apply space-y-3;
+}
+
+.between {
+	@apply flex items-center justify-between;
+}
+.update-button {
+	@apply p-2 px-6 rounded-lg;
+}
+
+.shadow {
+	&-light {
+		box-shadow: 0px 3px 6px 0px #08011333;
+	}
+}
+
+.pill {
+	@apply rounded-lg p-1 px-2 text-sm font-std-bold text-black;
+}
+
+.custom-btn {
+	@apply rounded-md p-2 px-4 bg-blue-500 text-gray-300 font-std-medium;
+
+	&-yellow {
+		@apply bg-yellow-500 text-black;
+	}
+}
+
+.section-card {
+	@apply bg-white shadow rounded-md w-full p-4 py-3 h-auto;
+}
+
+.test {
+	color: #f3f31a8a;
+}
+
+
+.collections,
+.advert-banner,
+.second-banner {
+	@apply px-4 w-full;
+}

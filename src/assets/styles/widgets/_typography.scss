@@ -1,0 +1,79 @@
+.text {
+	@apply font-std-book text-sm;
+
+	&.title {
+		@apply font-std-bold  text-lg;
+	}
+
+	&.subtitle {
+		
+
+		@apply text-sm font-std-book text-gray-500
+	}
+
+	&.caps {
+		@apply capitalize;
+	}
+
+	&-error {
+		@apply text-red-400  text-sm font-std-book;
+	}
+
+	&-success {
+		@apply text-green-400 text-sm font-std-book middle;
+	}
+}
+
+// .title {
+// 	@apply font-std-bold text-lg;
+// }
+
+// .subtitle {
+// 	@apply font-std-medium text-[16px];
+// }
+
+.one {
+	border: 1px solid red;
+	// height: 500px;
+	width: 100%;
+	// height: 400px;
+}
+
+.two {
+	border: 1px solid green;
+
+	height: 300px;
+
+	// width: 100%;
+	// height: 100%;
+	// height={500} width={500}
+}
+
+.header {
+	@apply font-std-bold;
+	// color: red;
+
+	&-sm {
+		@apply text-black text-lg;
+	}
+
+	&-big {
+		@apply text-black font-bold text-xl;
+	}
+}
+
+.body {
+	@apply font-std-book;
+
+	&-xs {
+		@apply text-gray-200 text-sm;
+	}
+
+	&-sm {
+		@apply text-gray-200 text-lg;
+	}
+
+	&-big {
+		@apply text-gray-200 font-bold text-xl;
+	}
+}

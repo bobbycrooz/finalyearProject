@@ -1,0 +1,26 @@
+.collections {
+    .brand_card{
+        height: 159px;
+        width: 128px;
+        position: relative;
+        background-color: #0000007f;
+
+        // &.new-age{
+            background-image: url(../../images/advert-banner/image.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        // }
+
+
+        &-text{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            
+            background-color: #08011393;
+            @apply    w-full;
+        }
+    }
+
+}

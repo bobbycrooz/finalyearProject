@@ -1,0 +1,115 @@
+.top-nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+
+	width: 100vw;
+	// display: flex;
+	// align-items: center;
+	background-color: rgba(255, 255, 255, 0.913);
+	z-index: 10;
+	backdrop-filter: blur(1px);
+
+	// searchbox widget
+	.search-box {
+		width: 100%;
+		background: #f0efef;
+		height: 100%;
+		border-radius: 8px;
+
+		.field {
+			width: 100%;
+			border-radius: 0 8px 8px 0;
+			// @apply bg-lightGray;
+			background: transparent;
+
+			color: $black;
+			&:focus {
+				outline: none;
+			}
+		}
+	}
+
+	.card-gesture {
+		background: $body;
+		border-radius: 40px 40px 0 0;
+		width: 100%;
+		height: 50%;
+	}
+}
+
+.admin-mode-top-nav {
+	position: fixed;
+	top: 60px;
+	left: 0;
+	height: 60px;
+	width: 100vw;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(255, 255, 255, 0.913);
+	z-index: 999999;
+}
+
+.menu_layer {
+	position: fixed;
+	left: -150vh;
+	top: 0;
+	transition: all 0.2s linear;
+	@apply w-full h-screen bg-[#00000083] strictFadeIn;
+	z-index: 15;
+
+	&.active {
+		left: 0;
+	}
+
+	.menu_sidebar {
+		width: 85%;
+		height: 100vh;
+		color: $body;
+		@apply flex flex-col items-start justify-start bg-blue-500 px-6 relative;
+
+		.content {
+			width: 100%;
+			margin-top: 50px;
+			.profile_details {
+				width: 183px;
+				margin: 0 auto;
+				// margin-top: 20px;
+				text-align: center;
+				// margin-top: 20px;
+
+				&-image {
+					border-radius: 50%;
+					background-color: #fff;
+					width: 90px;
+					height: 90px;
+					opacity: 0.5;
+				}
+			}
+
+			//
+
+			.nav_list {
+				width: 100%;
+				height: auto;
+				// margin: px 0;
+				margin-top: 10%;
+
+				&-item {
+					border-radius: 8px;
+
+					&.active,
+					&:hover {
+						background-color: #772af4;
+					}
+
+					&-text {
+						@apply font-std-medium text-xl
+                     capitalize ml-2;
+					}
+				}
+			}
+		}
+	}
+}

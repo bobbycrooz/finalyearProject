@@ -1,0 +1,90 @@
+.add_new {
+    .add-new-button {
+        @apply w-full capitalize bg-[#F0ECF5] p-3 rounded-xl centered font-std-book text-sm;
+    }
+
+    .uploaded-image-container {
+        @apply mt-4 text-gray-400 font-std-book centered bg-slate-200 h-[208px] w-full;
+    }
+
+    .product-details-card {
+        @apply bg-gray-300 shadow-sm rounded-md w-full h-auto p-4  mt-4;
+    }
+
+    .toggle-box {
+        @apply w-full my-1 h-[40px] border border-gray-200 between rounded-md;
+
+        .toggler {
+            width: 45px;
+            height: 15px;
+            background-color: $blue;
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.2s linear;
+
+            .indicator {
+                width: 25px;
+                background-color: $body;
+                height: 25px;
+                @apply rounded-full centered absolute border border-blue-400;
+                left: 20px;
+                top: -5px;
+                transition: all 0.2s linear;
+
+                &-point {
+                    @apply rounded-full;
+                    width: 15px;
+                    height: 15px;
+                    background-color: $blue;
+                }
+            }
+
+            &.off {
+                @apply bg-gray-200;
+
+                .indicator {
+                    left: 0px;
+                    @apply border border-gray-200;
+                    &-point {
+                        @apply bg-gray-200;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.product-action-tab {
+    @apply w-full relative capitalize flex h-[45px] bg-[#F0ECF5] rounded-2xl;
+
+    .tab-active {
+        transition: all 0.2s ease-in-out;
+        @apply w-1/2  h-[45px] bg-blue-400 rounded-2xl centered;
+    }
+
+  
+
+    .tab-btns-container {
+        @apply absolute w-full h-full left-0  between;
+        .tab-btn {
+            width: 50%;
+            @apply text-gray-200 font-std-medium capitalize;
+            &:focus{
+                outline: none
+            }
+
+            &.off {
+                @apply text-black;
+
+            }
+        }
+    }
+
+
+    &.off {
+        .tab-active {
+            transform: translateX(100%);
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}

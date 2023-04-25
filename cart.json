@@ -1,0 +1,53 @@
+{
+      "data": {
+          "_id": "63b1364ea35ef6ff4201fb58",
+          "email": "idrisloove@gmail.com",
+          "items": [
+              {
+                  "productID": {
+                      "_id": "63b022ba2fcbb6d8a85d96ea",
+                      "name": "power bank oraimo",
+                      "price": 30000
+                  },
+                  "quantity": 2,
+                  "price": 30000,
+                  "total": 60000,
+                  "_id": "63b59d70f32af2dcf111f3ee",
+                  "createdAt": "2023-01-04T15:38:24.635Z",
+                  "updatedAt": "2023-01-04T15:38:41.928Z"
+              },
+              {
+                  "productID": {
+                      "_id": "63b5a5e8f32af2dcf111f4c1",
+                      "name": "samsung s9",
+                      "price": 56000
+                  },
+                  "quantity": 1,
+                  "price": 56000,
+                  "total": 56000,
+                  "_id": "63b5e962cb4b24a0ca6fa855",
+                  "createdAt": "2023-01-04T21:02:26.615Z",
+                  "updatedAt": "2023-01-04T21:02:26.615Z"
+              },
+              {
+                  "productID": {
+                      "_id": "63adef8f51bed15796f552c8",
+                      "name": "iphone 13",
+                      "price": 156500,
+                      "count": 1
+                  },
+                  "quantity": 3,
+                  "price": 156500,
+                  "total": 469500,
+                  "_id": "64468cbaff15ab8e526423eb",
+                  "createdAt": "2023-04-24T14:05:46.096Z",
+                  "updatedAt": "2023-04-24T14:05:46.096Z"
+              }
+          ],
+          "subTotal": 585500,
+          "createdAt": "2023-01-01T07:29:18.808Z",
+          "updatedAt": "2023-04-24T14:05:46.097Z",
+          "__v": 14
+      },
+      "message": "Cart fetched"
+  }

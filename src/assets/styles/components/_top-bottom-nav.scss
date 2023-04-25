@@ -1,0 +1,37 @@
+// .top_nav {
+
+// }
+
+.bottom_nav {
+    height: 75px;
+    position: fixed;
+    bottom: -100px;
+    transition: all 0.2s linear;
+    z-index: 9;
+    @apply flex  w-full bg-gray-50 p-1  shadow;
+
+    &-item {
+        width: 100%;
+        @apply flex flex-col items-center justify-center;
+
+        &.admin {
+            @apply border-b shadow border-blue-400 rounded-xl h-full w-full bg-gray-200 centered;
+
+            .admin-btn {
+                width: 50px;
+                height: 50px;
+                border-radius: 100%;
+                @apply bg-blue-400  centered p-4;
+                .admin-sub-btn {
+                    @apply h-full w-full bg-gray-400 rounded-full centered;
+                }
+            }
+        }
+    }
+
+    &.active {
+        bottom: 0;
+    }
+}
+
+

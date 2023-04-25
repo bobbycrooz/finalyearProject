@@ -1,0 +1,93 @@
+{
+    "data": [
+        {
+            "_id": "63adef8f51bed15796f552c8",
+            "name": "iphone 13",
+            "description": "purple beautifull compactible caharger you take along for travel",
+            "category": "mobile phone",
+            "imageUrl": [
+                "https://ng.jumia.is/cms/0-1-weekly-cps/2021/w51-52/hp-freelinks/accessories-warehouse_260x144v2.png"
+            ],
+            "uuid": "nvjmcpwerhmijcgmjmfd",
+            "price": 156500,
+            "initialPrice": 178600,
+            "count": 1,
+            "isFlash": false,
+            "newItem": true,
+            "isAvailable": true,
+            "__v": 0,
+            "flashPrice": "36,000",
+            "originalPrice": "50,000"
+        },
+        {
+            "_id": "63adefd6f2808db93c3bb370",
+            "name": "iphone 13",
+            "description": "purple beautifull compactible caharger you take along for travel",
+            "category": "mobile phone",
+            "imageUrl": [
+                "https://ng.jumia.is/cms/0-1-weekly-cps/2021/w51-52/hp-freelinks/accessories-warehouse_260x144v2.png"
+            ],
+            "uuid": "nvjmcpwerhmijcgmjmfd",
+            "price": 156500,
+            "initialPrice": 178600,
+            "isFlash": false,
+            "newItem": true,
+            "isAvailable": true,
+            "__v": 0,
+            "flashPrice": "36,000",
+            "originalPrice": "50,000"
+        },
+        {
+            "_id": "63b022ba2fcbb6d8a85d96ea",
+            "name": "power bank oraimo",
+            "description": "30mAH oraimo power bank with black and fast charging feature",
+            "category": "accessories",
+            "imageUrl": [
+                "https://www.jumia.com.ng/oraimo-power-oraimo-bank-opb-p206dn-20kmah-78856472.html"
+            ],
+            "uuid": "nvjmcpwerhmijcgmjmfd",
+            "price": 30000,
+            "initialPrice": 29000,
+            "isFlash": false,
+            "newItem": true,
+            "isAvailable": true,
+            "__v": 0,
+            "flashPrice": "36,000",
+            "originalPrice": "50,000"
+        },
+        {
+            "_id": "63b5a5e8f32af2dcf111f4c1",
+            "name": "samsung s9",
+            "description": "No cracks ",
+            "category": "Phones",
+            "imageUrl": [
+                "https://cdn.filestackcontent.com/f9J0iGpT7u7CfFVMIo5a"
+            ],
+            "uuid": "nvjmcpwerhmijcgmjmfd",
+            "price": 56000,
+            "initialPrice": 55000,
+            "newItem": true,
+            "isAvailable": true,
+            "__v": 0,
+            "flashPrice": "36,000",
+            "originalPrice": "50,000"
+        },
+        {
+            "_id": "63b5a5f2f32af2dcf111f4c3",
+            "name": "samsung s9",
+            "description": "No cracks ",
+            "category": "Phones",
+            "imageUrl": [
+                "https://cdn.filestackcontent.com/f9J0iGpT7u7CfFVMIo5a"
+            ],
+            "uuid": "nvjmcpwerhmijcgmjmfd",
+            "price": 56000,
+            "initialPrice": 55000,
+            "newItem": true,
+            "isAvailable": true,
+            "__v": 0,
+            	"flashPrice": "36,000",
+		"originalPrice": "50,000"
+        }
+    ]
+}
