@@ -9,7 +9,7 @@ import Menu from './menu';
 import React from 'react';
 import Router, { useRouter } from 'next/router';
 import Button from '@widget';
-import { BiStore, BiCart } from 'react-icons/bi';
+import { BiStore, BiCart, BiArrowBack } from 'react-icons/bi';
 import Link from 'next/link';
 import { useCarts } from '@contexts/cartContext';
 
@@ -88,17 +88,25 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 			<div className="top-nav">
 				{/* NAV ITEM ROW */}
 				<div className="row px-4 py-3 flex items-center justify-between ">
+					{!true && <div role="button" onClick={() => history.back()} className="back  p-2 ">
+						<BiArrowBack className="text-gray-60 text-2xl" />
+					</div>}
+
 					{/* LOGO AND HAMBURGER ICON */}
 					<div className="logo-burger flex">
-						<div className="hambuger">
-							<Hamburger toggled={openMenu} toggle={setOpenMenu} size={20} />
-						</div>
+						{true && (
+							<div className="hambuger">
+								<Hamburger toggled={openMenu} toggle={setOpenMenu} size={20} />
+							</div>
+						)}
 
 						<div className="logo middle space-x-1">
-							<div className="rounded-full w-8 h-8 bg-blue-500 text-white centered">
-								<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
-							</div>
-							<h1 className="logotext logoFont text-2xl">campuStore</h1>
+							{!true && (
+								<div className="rounded-full w-8 h-8 bg-blue-500 text-white centered">
+									<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
+								</div>
+							)}
+							<h1 className="logotext font-std-medium text-2xl">campuStore</h1>
 						</div>
 					</div>
 
@@ -109,9 +117,11 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 						</Link>
 						<Link href={'/cart'}>
 							<div className="cart_badge  relative">
-								{cartitems?.items?.length > 0 && <div className="p-1 rounded-full bg-blue-500 px-2 text-gray-50 text-[8px] absolute -top-2 -right-2 ">
-									{cartitems?.items?.length}
-								</div>}
+								{cartitems?.items?.length > 0 && (
+									<div className="p-1 rounded-full bg-blue-500 px-2 text-gray-50 text-[8px] absolute -top-2 -right-2 ">
+										{cartitems?.items?.length}
+									</div>
+								)}
 								<BiCart className="text-[32px] text-gray-500" />
 							</div>
 						</Link>

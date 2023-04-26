@@ -44,38 +44,41 @@ const Mycart = () => {
 		'Expert product delivery',
 		'import revenue',
 		'Sell at comfort',
-		'trusted buyers',
-	]
+		'trusted buyers'
+	];
 
 	return (
 		<div className="bg-gray-100 cart_list_page  w-screen h-screen relative stack">
 			<SEO title="Store" />
 
-			<div className="section-card mt-9 bg-green-400 centered">Create new campus store</div>
+			<div className="section-card mt-9 bg-green-400 centered font-std-medium">
+				Create new store for your products
+			</div>
 			<div className="section-card mt-9 bg-green-400 stack">
-				<h1 className="text-lg w-full text-center">why create a store?</h1>
+				<h1 className="text-lg w-full text-center capitalize">why create a store?</h1>
 				<div className="w-full grid grid-cols-2 gap-2 ">
-				{
-					addArr.map((i,k) => (
+					{addArr.map((i, k) => (
 						<div key={k} className="rounded-md  bg-red-400 text-center px-4 p-3 h-12">
-							<p className='text-xs text-gray-50  capitalize'>{i}</p>
+							<p className="text-xs text-gray-50  capitalize">{i}</p>
 						</div>
-					))
-				}
+					))}
 				</div>
 			</div>
 
-			<div className="section-card  bg-green-400 flex flex-col">
-				advantage of creating a store click bellow to own a store
+			<div className="section-card  bg-green-400 flex flex-col stack">
+				<h1 className="text-sm w-full text-center text-gray-400">
+					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet quo reiciendis
+					cupiditate possimus magni earum enim laboriosam volu
+				</h1>
+
 				<Link href={'/store/new-store'}>
-				<Button text="get started" full />
+					<Button text="get started" full />
 				</Link>
 			</div>
 
-			
-			<div className="section-card  bg-green-400 flex flex-col">
-				<p className="text ">active stores</p>
-			</div>
+			{/* <div className="section-card  bg-green-400 flex flex-col">
+				<p className="text-lg w-full text-center capitalize ">active stores</p>
+			</div> */}
 		</div>
 	);
 };
