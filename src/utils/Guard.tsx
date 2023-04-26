@@ -16,9 +16,9 @@ const Guard = () => {
 			return console.log('this user is a guest');
 		}
 
-		// if (!hasToken()) {
-		// 	push('/auth');
-		// }
+		if (!hasToken()) {
+			push('/auth');
+		}
 	}
 
 	React.useEffect(() => {

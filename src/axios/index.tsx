@@ -22,10 +22,10 @@ function fmtResponse(responseData: any, error: boolean) {
 	}
 }
 
-console.log(process.env.NEXT_PUBLIC_BASE_LINK, process.env.NODE_ENV);
+console.log(process.env.NEXT_PUBLIC_BASE_LINK, process.env.NEXT_PUBLIC_NODE_ENV);
 
 const service = axios.create({
-	baseURL: process.env.NODE_ENV === 'development' ? `http://localhost:3007` : process.env.NEXT_PUBLIC_BASE_LINK,
+	baseURL: process.env.NEXT_PUBLIC_NODE_ENV === 'development' ? `http://localhost:3007` : process.env.NEXT_PUBLIC_BASE_LINK,
 	headers: {
 		'X-API-KEY': '95e03ddd3572374c5a61d596e0eafffa',
 		'iden-unique_key': 'quadraple-and-hello-edfojoidfj'

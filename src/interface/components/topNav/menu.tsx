@@ -76,6 +76,8 @@ const Menu = forwardRef(({ visibility, menuHandler }: PropsTypes, ref) => {
 	const { setOrdersList } = useOrders();
 	const { setLogedInUser } = useAuth();
 	function logOut() {
+		console.log('signin out');
+		
 		let removeToken = utils.removeToken();
 
 		localStorage.clear();
@@ -92,6 +94,7 @@ const Menu = forwardRef(({ visibility, menuHandler }: PropsTypes, ref) => {
 
 			return push('/auth');
 		}
+		
 	}
 
 	React.useEffect(() => {
