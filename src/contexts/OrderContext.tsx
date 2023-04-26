@@ -63,6 +63,7 @@ const OrderProvider = ({ children }: any) => {
 
 	// get one order details
 	async function placeOrder(id: string) {
+	try {
 		const {
 			// @ts-ignore
 			error,
@@ -74,6 +75,10 @@ const OrderProvider = ({ children }: any) => {
 			await getOrderList();
 			return true;
 		}
+	} catch (error) {
+		console.log(error, "plaace order error!!");
+		
+	}
 	}
 
 	// Create a new order
@@ -97,7 +102,7 @@ const OrderProvider = ({ children }: any) => {
 				serverResponse: { data }
 			} = await createTempOrder(orderData);
 
-			console.log(data);
+			// console.log(data);
 
 			if (!error) {
 				await getOrderList();

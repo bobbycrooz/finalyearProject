@@ -25,7 +25,7 @@ export function addToCart(count: number) {
 export function updateCart(productID: string, quantity: number) {
 	console.log(productID, quantity);
 	return service({
-		url: `/v1/cart/add-to-cart?productId=${productID}&quantity=${quantity}`,
+		url: `/v1/cart/add?productId=${productID}&quantity=${quantity}`,
 		method: 'get'
 		// data: data
 	});

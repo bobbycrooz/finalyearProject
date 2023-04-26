@@ -16,12 +16,16 @@ import Related from '@sections/relatedProduct';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 import { IoMdFlash } from 'react-icons/io';
 import { useProducts } from '@contexts/productContext';
+import { useCarts } from '@contexts/cartContext';
 const Mycart = () => {
 	const [val, setVal] = React.useState(1);
 	const [liked, setLiked] = React.useState(false);
+	const [isLoading, setIsLoading] = React.useState(false);
+	const [qqt, setQQt] = React.useState(1);
 	const [currentProduct, setCurrentProduct] = React.useState<any>();
 	const { push, query } = useRouter();
 	const { setProducts, products } = useProducts();
+	const { updateCartItem } = useCarts();
 
 	// get product full details
 	function fetchProductDetails(productId?: string) {
@@ -30,6 +34,29 @@ const Mycart = () => {
 			setCurrentProduct(currentItem[0]);
 		}
 	}
+
+	async function handleAddToCart(id: string) {
+		setIsLoading(true);
+		const updated = await updateCartItem(id, qqt);
+
+		if (updated) {
+			setIsLoading(false);
+		}
+
+		setIsLoading(false);
+	}
+
+	function handleInc() {
+		setQQt(qqt + 1);
+	}
+
+	function handleDec() {
+		if (qqt > 0) {
+			setQQt(qqt - 1);
+		}
+	}
+
+	console.log(currentProduct?._id);
 
 	useEffect(() => {
 		fetchProductDetails(String(query.id));
@@ -57,7 +84,7 @@ const Mycart = () => {
 					</div>
 
 					<div className="price_box  flex items-end">
-						<Text type="subtitle" text={`# ${currentProduct?.flashPrice}`} />
+						<Text type="subtitle" text={`# ${currentProduct?.price}`} />
 						<Text text={`# ${currentProduct?.initialPrice}`} customClass={'ml-2'} />
 					</div>
 
@@ -108,13 +135,22 @@ const Mycart = () => {
 			{/* PRODUCT OPERAATIONS */}
 			<div className="section-card my-4 between">
 				<div className="grouped_action flex middle space-x-3">
-					<div className="small_box minus">+</div>
-					<div className="small_box value">{`2`}</div>
-					<div className="small_box plus">-</div>
+					<div role="button" onClick={handleDec} className="small_box minus">
+						-
+					</div>
+					<div className="small_box value">{qqt}</div>
+					<div role="button" onClick={handleInc} className="small_box plus">
+						+
+					</div>
 				</div>
 
 				<div className="grouped_button middle space-x-3">
-					<Button text="Add to cart" customClass="p-2 px-3  rounded-sm text-xs" />
+					<Button
+						isLoading={isLoading}
+						onClick={() => handleAddToCart(currentProduct?._id)}
+						text="Add"
+						customClass="p-2 px-3  rounded-sm text-xs"
+					/>
 					<Button ghost text="Buy now" customClass="p-2 px-3 rounded-sm text-xs" />
 				</div>
 			</div>

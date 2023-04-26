@@ -34,7 +34,7 @@ const CustomField = ({ label, customClass, name, change, placeholder, type, icon
 						type={'text'}
 						onChange={(e) => change(e, name)}
 						{...rest}
-						className={`input price ${customClass}`}
+						className={`input price text-sm ${customClass}`}
 					/>
 				</div>
 			</div>

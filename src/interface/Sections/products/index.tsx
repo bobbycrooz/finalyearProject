@@ -158,11 +158,23 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 								<div>
 									{/* PRODUCT IMAGE */}
 									<div className="centered  p-2 product-image-box h-[100px]  ">
-									{item.imageUrl[0] !== undefined ? (
-					<Image alt="" src={Img(item.imageUrl)} height={80} width={70} layout="intrinsic" />
-				) : (
-					<Image alt="" src={headset} height={80} width={70} layout="intrinsic" />
-				)}
+										{item.imageUrl[0] !== undefined ? (
+											<Image
+												alt=""
+												src={Img(item.imageUrl)}
+												height={80}
+												width={70}
+												layout="intrinsic"
+											/>
+										) : (
+											<Image
+												alt=""
+												src={headset}
+												height={80}
+												width={70}
+												layout="intrinsic"
+											/>
+										)}
 									</div>
 
 									{/* PRODUCT DETAILS */}
@@ -170,11 +182,11 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 										<Text text={item.name} />
 										<div className="price-row flex items-center ">
 											<h1 className="text-blue text-sm">
-												{item.flashPrice}
+												{item.price}
 											</h1>
 
 											<p className="text-gray original-price text-xs ml-3">
-												{item.originalPrice}
+												{item.initialPrice}
 											</p>
 										</div>
 
@@ -251,6 +263,6 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 	// 		)}
 	// 	</div>
 	// );
- };
+};
 
 export default BestSellingProduct;

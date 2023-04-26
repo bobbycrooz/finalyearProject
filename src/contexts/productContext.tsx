@@ -1,7 +1,7 @@
 import { allProducts } from '@axios/products';
-import { ProductTypes } from '@types';
+// import { ProductTypes } from '@types';
 import React, { useContext, useState, useEffect, useMemo, createContext, Children } from 'react';
-import produvctArray from '../../products.json';
+// import produvctArray from '../../products.json';
 
 const ProductContext = createContext<any>([]);
 
@@ -10,13 +10,11 @@ export const useProducts = () => {
 };
 
 const ProductProvider = ({ children }: any) => {
-	const [products, setProducts] = useState<any>(produvctArray.data);
+	const [products, setProducts] = useState<any>([]);
 
 	// fetch products from the database on first load and savve
 	async function fetchAllProduct() {
-		console.log('checking the value of the products stored', !!products?.length);
-		console.log('this is the content of the products in store', products);
-
+		
 		if (!!products?.length === false) {
 			const {
 				// @ts-ignore
@@ -30,7 +28,6 @@ const ProductProvider = ({ children }: any) => {
 				return setProducts(data);
 			}
 
-			console.log('this is the content of the products in store', products);
 		}
 
 		return;
@@ -38,8 +35,7 @@ const ProductProvider = ({ children }: any) => {
 
 	useEffect(() => {
 		fetchAllProduct();
-
-		console.log('ther is no products so i fetched');
+		console.log('fetching products....')
 	}, []);
 
 	return <ProductContext.Provider value={{ products, setProducts }}>{children}</ProductContext.Provider>;

@@ -4,6 +4,8 @@ import Button, { Text } from '@widget';
 import OrdersModal from './orderModal';
 import { useOrders } from '@contexts/OrderContext';
 import { useRouter } from 'next/router';
+import moment from "moment"
+
 
 const OrderItem = ({ collapse, item, confirm }: { collapse?: boolean; item: any; confirm?: any }) => {
 	const [val, setVal] = React.useState(false);
@@ -11,6 +13,14 @@ const OrderItem = ({ collapse, item, confirm }: { collapse?: boolean; item: any;
 	// const { placeOrder } = useOrders();
 
 	// console.log(item?.status);
+
+	function dateFormater(date:string) {
+
+		const orderDate = moment("2023-01-04T13:34:31.751Z");
+	
+		return orderDate.format("MMMM Do YYYY, h:mm a")
+		
+	}
 
 	if (collapse) {
 		return (
@@ -20,7 +30,7 @@ const OrderItem = ({ collapse, item, confirm }: { collapse?: boolean; item: any;
 
 					<div className="box middle space-x-2">
 						<h1 className="text-sm font-std-book text-gray-500 capitalize">order id:</h1>
-						<h1 className="font-std-medium text-gray-700">{item?._id}</h1>
+						<h1 className="font-std-medium text-gray-700">{item?._id.slice(0,5) + "..."}</h1>
 					</div>
 
 					<div className="order-info  p-2 space-y-3">
@@ -40,7 +50,7 @@ const OrderItem = ({ collapse, item, confirm }: { collapse?: boolean; item: any;
 
 						<hr className="border border-b border-dashed border-slate-300" />
 						<div className="date_created">
-							<h1 className="text-sm font-std-book text-gray-500">21-04-2023 at 12:45pm</h1>
+							<h1 className="text-sm font-std-book text-gray-500">{item?.createdAt ? dateFormater(item?.createdAt) : "--"}</h1>
 						</div>
 					</div>
 				</div>

@@ -27,7 +27,13 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 		setUpdatting(false);
 	}
 
-	// console.log(item);
+	function Img(str: any) {
+		let thumbnail = str[0];
+	
+		return String(thumbnail);
+	}
+	
+	console.log(item, " -------");
 	
 
 	return (
@@ -36,12 +42,32 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 				{/* ITEM DETAILS */}
 				<div className="row flex items-start h-[100px] ">
 					<div className="item_image relative h-full w-1/2 ">
-						<Image
-							src={'/products/watch2.webp'}
-							alt={'watch'}
-							layout={'fill'}
-							className={'br'}
-						/>
+					{/* {item?.imageUrl[0] !== undefined ? (
+												<Image
+													alt=""
+													src={Img(item.imageUrl)}
+													height={80}
+													width={70}
+													layout="intrinsic"
+												/>
+											) : (
+												<Image
+													alt=""
+													src={'/products/watch1.webp'}
+													height={80}
+													width={70}
+													layout="intrinsic"
+													className="br"
+												/>
+											)} */}
+												<Image
+													alt=""
+													src={'/products/watch1.webp'}
+													// height={80}
+													// width={70}
+													layout="fill"
+													className="br"
+												/>
 					</div>
 
 					<div className="item_details">
@@ -76,10 +102,12 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 				<div className="w-full border-b border-y-lightGray"></div>
 
 				<div className="button_group justify-center flex">
-					<button className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
+					<Link href={`/product?id=${item?.productID?._id}`}>
+					<button  className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
 						<Love />
-						<p> buy one</p>
+						<p> view</p>
 					</button>
+					</Link>
 					<div className="space w-4"></div>
 					<button className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
 						<Buttt />

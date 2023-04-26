@@ -9,7 +9,7 @@ type loginDataTypes = {
 export function userLogin(data: UserTypes) {
 	// console.log('look i got here');
 	return service({
-		url: '/v1/auth/login-user',
+		url: '/v1/auth/signin',
 		method: 'post',
 		data: data
 	});

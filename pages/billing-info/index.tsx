@@ -22,7 +22,7 @@ const Billing = () => {
 	const [billingInfo, setBillingInfo] = React.useState({});
 	const { onChangeOrderObject } = useOrders();
 	const router = useRouter();
-	const { user } = useAuth();
+	const { loggedInUser } = useAuth();
 	const { cartitems } = useCarts();
 
 	function addOrderOption() {
@@ -34,8 +34,10 @@ const Billing = () => {
 	// console.log(user, 'this is the user object from billing-info');
 
 	useEffect(() => {
-		setBillingInfo(user);
+		setBillingInfo(loggedInUser);
 	}, []);
+
+	console.log(loggedInUser)
 
 	return (
 		<div className="bg-admin billing w-screen relative">
@@ -51,22 +53,22 @@ const Billing = () => {
 						<div className="w-full">
 							<div className="row flex justify-between px-2">
 								<Text text="username" type="title" />
-								<Text text={user?.username} type="subtitle" />
+								<Text text={loggedInUser?.username} type="subtitle" />
 							</div>
 
 							<div className="row flex justify-between px-2">
 								<Text text="email" type="title" />
-								<Text text={user?.email} type="subtitle" />
+								<Text text={loggedInUser?.email} type="subtitle" />
 							</div>
 
 							<div className="row flex justify-between px-2">
 								<Text text="phone" type="title" />
-								<Text text={user?.phone} type="subtitle" />
+								<Text text={loggedInUser?.phone} type="subtitle" />
 							</div>
 
 							<div className="row flex justify-between px-2">
 								<Text text="Address" type="title" />
-								<Text text={user?.address} type="subtitle" />
+								<Text text={loggedInUser?.address} type="subtitle" />
 							</div>
 						</div>
 						<div className="action_btn w-full px-6 my-4">

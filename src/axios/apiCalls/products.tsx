@@ -7,7 +7,6 @@ type loginDataTypes = {
 };
 
 export function allProducts() {
-	// console.log('look lets fo this way --------');
 
 	return service({
 		url: '/v1/products',

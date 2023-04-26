@@ -186,8 +186,11 @@ const Auth: NextPage = () => {
 		<div className="bg-body h-screen w-screen relative px-6">
 			<SEO title="home" />
 			<SoftLoader visibility={isLoading} />
-			<div className="logo mx-auto centered  mt-20">
-				<Image alt="" className="br" src={Logo} height={40} width={120} />
+			<div className="logo middle justify-center space-x-1 mx-auto mt-20 ">
+				<div className="rounded-full w-8 h-8 bg-blue-500 text-white centered">
+					<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
+				</div>
+				<h1 className="logotext logoFont text-2xl">campuStore</h1>
 			</div>
 
 			<div

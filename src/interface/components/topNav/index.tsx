@@ -13,7 +13,6 @@ import { BiStore, BiCart } from 'react-icons/bi';
 import Link from 'next/link';
 import { useCarts } from '@contexts/cartContext';
 
-
 interface PropsTypes {
 	context?: string;
 	searchSetter: React.Dispatch<React.SetStateAction<never[]>>;
@@ -24,8 +23,6 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 	const menuRef = React.useRef(null);
 	const { pathname } = useRouter();
 	const { cartitems } = useCarts();
-
-
 
 	function menuHandler(e?: any) {
 		const MenuElement = menuRef.current;
@@ -38,9 +35,8 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 	}
 
 	function showSearchComponent() {
-		if(['/home', '/categories'].includes(pathname)) return true
-		return false
-		
+		if (['/home', '/categories'].includes(pathname)) return true;
+		return false;
 	}
 
 	const isAdminPage = pathname.slice(0, 6) == '/admin';
@@ -102,31 +98,35 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 							<div className="rounded-full w-8 h-8 bg-blue-500 text-white centered">
 								<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
 							</div>
-							<h1 className="logotext font-std-medium text-xl">campusStore</h1>
+							<h1 className="logotext logoFont text-2xl">campuStore</h1>
 						</div>
 					</div>
 
 					{/* CART AND STORE */}
 					<div className="icon-cart space-x-3 flex">
-						<BiStore className="text-[32px] text-gray-500" />
+						<Link href={'/store'}>
+							<BiStore className="text-[32px] text-gray-500" />
+						</Link>
 						<Link href={'/cart'}>
 							<div className="cart_badge  relative">
-								<div className="p-1 rounded-full bg-blue-500 px-2 text-gray-50 text-[8px] absolute -top-2 -right-2 ">
-								{cartitems?.items?.length}
-								</div>
+								{cartitems?.items?.length > 0 && <div className="p-1 rounded-full bg-blue-500 px-2 text-gray-50 text-[8px] absolute -top-2 -right-2 ">
+									{cartitems?.items?.length}
+								</div>}
 								<BiCart className="text-[32px] text-gray-500" />
 							</div>
 						</Link>
 					</div>
 				</div>
 				{/* SEARCH BOX CONTAINER */}
-				{showSearchComponent() && <div className="row px-4 p-2 h-16 bg-white w-full centered ">
-					<SearchBox
-						searchSetter={function (value: React.SetStateAction<never[]>): void {
-							throw new Error('Function not implemented.');
-						}}
-					/>
-				</div>}
+				{showSearchComponent() && (
+					<div className="row px-4 p-2 h-16 bg-white w-full centered ">
+						<SearchBox
+							searchSetter={function (value: React.SetStateAction<never[]>): void {
+								throw new Error('Function not implemented.');
+							}}
+						/>
+					</div>
+				)}
 				{/* MENU */}
 				<Menu ref={menuRef} menuHandler={menuHandler} visibility={openMenu} />
 			</div>
