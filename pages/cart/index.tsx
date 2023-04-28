@@ -96,7 +96,7 @@ const Mycart = () => {
 					<div className="w-full centered">
 						<Button
 							text="Products"
-							link="/categories?name=phones"
+							link="/categories?cat=phones"
 							customClass="custom-btn custom-btn-yellow"
 						/>
 					</div>
