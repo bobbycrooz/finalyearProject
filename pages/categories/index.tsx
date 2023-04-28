@@ -129,7 +129,7 @@ const Category = () => {
 			<div className="w-full mt-4">
 				
 
-				{result.length > 0  ? (<ProductList listType="list" data={result} />) : (<SectionLoader/>)}
+				{result.length > 0  ? (<ProductList listType="list" data={result} />) : (<SectionLoader message={'No product in this store'}/>)}
 			</div>
 
 			<div className="space w-full h-[100px]"></div>

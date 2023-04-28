@@ -59,7 +59,7 @@ const StoreProducts = ({ storeProducts }: { storeProducts?: any }) => {
 					// onSlideChange={() => console.log('slide change')}
 					tag={'div'}
 				>
-					{storeProducts.map(
+					{storeProducts?.map(
 						(
 							item: any,
 							index: string

@@ -11,7 +11,7 @@ interface PropsTypes {
 	// onClick?: () => void;
 }
 
-const SectionLoader = ({ message }: { message: string }) => {
+const SectionLoader = ({ message }: { message?: string }) => {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
