@@ -11,6 +11,7 @@ import Guard from '@utils/Guard';
 import '@styles/index.scss';
 import { useResizer } from '@hooks/ressizer';
 import OrderProvider from '@contexts/OrderContext';
+import StoreProvider from '@contexts/storeContext';
 
 type NextPageWithLayout = NextPage & {
 	getLayout?: (page: ReactElement) => ReactNode;
@@ -46,8 +47,10 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
 			<ProductProvider>
 				<CartProvider>
 					<OrderProvider>
-						<Guard />
-						{getLayout(<Component {...pageProps} />)}
+						<StoreProvider>
+							<Guard />
+							{getLayout(<Component {...pageProps} />)}
+						</StoreProvider>
 					</OrderProvider>
 				</CartProvider>
 			</ProductProvider>

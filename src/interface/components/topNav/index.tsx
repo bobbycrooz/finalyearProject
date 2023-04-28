@@ -39,6 +39,11 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 		return false;
 	}
 
+	function showBackBtn() {
+		if (['/home', '/categories'].includes(pathname)) return true;
+		return false;
+	}
+
 	const isAdminPage = pathname.slice(0, 6) == '/admin';
 	let currentRouteName = pathname === '/admin' ? 'Overview' : pathname.slice(7).replace('/', '-');
 	let routeName = ['/home', '/categories'].includes(pathname) ? null : pathname.slice(1).replace('/', ' ');
@@ -88,13 +93,13 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 			<div className="top-nav">
 				{/* NAV ITEM ROW */}
 				<div className="row px-4 py-3 flex items-center justify-between ">
-					{!true && <div role="button" onClick={() => history.back()} className="back  p-2 ">
+					{!showBackBtn() && <div role="button" onClick={() => history.back()} className="back  p-2 ">
 						<BiArrowBack className="text-gray-60 text-2xl" />
 					</div>}
 
 					{/* LOGO AND HAMBURGER ICON */}
 					<div className="logo-burger flex">
-						{true && (
+						{showBackBtn() && (
 							<div className="hambuger">
 								<Hamburger toggled={openMenu} toggle={setOpenMenu} size={20} />
 							</div>
@@ -112,7 +117,7 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 
 					{/* CART AND STORE */}
 					<div className="icon-cart space-x-3 flex">
-						<Link href={'/store'}>
+						<Link href={'/store/review-store'}>
 							<BiStore className="text-[32px] text-gray-500" />
 						</Link>
 						<Link href={'/cart'}>

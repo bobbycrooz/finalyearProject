@@ -63,10 +63,16 @@ const Auth: NextPage = () => {
 			seIsLoading(true);
 			// @ts-ignore
 			const { serverResponse, error } = await creatUser(user);
+
+			console.log(serverResponse, 'this is the srve ----', error);
+
 			if (error) {
 				seIsLoading(!true);
 
-				return Notify('error', `${serverResponse}`);
+				return Notify(
+					'error',
+					`${serverResponse.data ? serverResponse.data.message : serverResponse.message}`
+				);
 			}
 			seIsLoading(false);
 			setIsSigningUp(false);
@@ -76,10 +82,12 @@ const Auth: NextPage = () => {
 			// @ts-ignore
 			const { serverResponse, error } = await userLogin(user);
 
+			console.log(serverResponse, 'this is the srve ----', error);
+
 			if (error) {
 				seIsLoading(!true);
 
-				return Notify('error', `${serverResponse}`);
+				return Notify('error', `${serverResponse.message ? serverResponse.message : serverResponse }`);
 			}
 
 			const saveUserToken = utils.saveToken(serverResponse.token);

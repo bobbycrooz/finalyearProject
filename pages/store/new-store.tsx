@@ -13,19 +13,32 @@ import BottomNav from '@components/bottomNav';
 import headset from '@images/headset.png';
 import { Key, SetStateAction, useState } from 'react';
 import CustomField from '@widget/CustomInput';
-import { createNewProduct } from '@axios/admin';
+import { createStore } from '@axios/stores';
+import { useAuth } from '@contexts/authContext';
 // @ts-ignore
 import { PickerOverlay } from 'filestack-react';
 import StoreModal from './storeModal';
+import { v4 as uuidv4 } from 'uuid';
+import { useRouter } from 'next/router';
+import { BiImage } from 'react-icons/bi';
 
 let tempArry: any[] = [];
 
 const AdminProducts: NextPage = () => {
 	const [showPicker, openPicker] = useState(false);
-	const [isNewItem, setIsNew] = useState(false);
-	const [isFlash, setIsFlash] = useState(false);
-	const [isAvailable, setIsAvalable] = useState(false);
-	const [newProductDetails, setNewProDetails] = useState<{ [key: string]: any }>({});
+	const [showModal, setShow] = useState(false);
+	const [isLoading, setIsLoading] = useState(false);
+	const { push } = useRouter();
+	// const [isFlash, setIsFlash] = useState(false);
+	// const [isAvailable, setIsAvalable] = useState(false);
+
+
+	const { loggedInUser } = useAuth();
+
+	const [newProductDetails, setNewProDetails] = useState<{ [key: string]: any }>({
+		storeId: uuidv4(),
+		email: loggedInUser.email
+	});
 
 	// upload product details
 	function getDetails(e: { target: { value: string } }, fieldName: string) {
@@ -40,18 +53,19 @@ const AdminProducts: NextPage = () => {
 		});
 	}
 
-	function toggleHandler(fieldName: string) {
-		if (newProductDetails[fieldName]) {
-			return setNewProDetails({
-				...newProductDetails,
-				[fieldName]: !newProductDetails[fieldName]
-			});
+	async function create(fieldName: string) {
+		setIsLoading(true);
+
+		const created = await submitStore();
+
+		if (created) {
+			setIsLoading(false);
+			setShow(false);
+
+			push('/store/review-store');
 		}
 
-		setNewProDetails({
-			...newProductDetails,
-			[fieldName]: true
-		});
+		setShow(false);
 	}
 
 	function updateImage(res: { filesUploaded: { url: any }[] }) {
@@ -64,16 +78,24 @@ const AdminProducts: NextPage = () => {
 
 		setNewProDetails({
 			...newProductDetails,
-			imageUrl: tempArry
+			cover: tempArry
 		});
 
 		openPicker(false);
 	}
 
-	async function submitProduct() {
+	async function submitStore() {
 		// @ts-ignore
-		const { serverResponse, error } = await createNewProduct(newProductDetails);
-		console.log(serverResponse, error, 'reasonable response');
+		const { serverResponse, error } = await createStore(newProductDetails);
+
+		console.log(newProductDetails, 'reasonable response', serverResponse, error);
+
+		if (serverResponse && !error) {
+			return true;
+		}
+
+		setIsLoading(false);
+		console.log(serverResponse.message);
 	}
 
 	return (
@@ -87,10 +109,16 @@ const AdminProducts: NextPage = () => {
 			/>
 
 			<div className="page_content w-full px-4 mt-[70px]">
-				<button className=" add-new-button ">Creating new store</button>
+				{/* <button className=" add-new-button ">Creating new store</button> */}
+				<div
+					//
+					className="border-b border-red-500  bg-red-50 text-center px-4 p-3 h-12 mt-8 w-full"
+				>
+					<p className="text-sm text-red-500  capitalize font-std-medium">Create new store</p>
+				</div>
 
-				<div className="uploaded-image-container">
-					{/* {tempArry && <Image width={200} height={200} src={} alt={'produuct image'} />} */}
+				<div className="uploaded-image-container relative">
+					{tempArry && <Image layout="fill" src={tempArry[0]} alt={'produuct image'} />}
 				</div>
 
 				<div className="product-details-card space-y-4">
@@ -154,19 +182,34 @@ const AdminProducts: NextPage = () => {
 						/>
 					)}
 
-					<div onClick={() => openPicker(true)} className="w-full border p-3">
-						<Text text={'Select images'} type="title" customClass="" />
+					<div
+						onClick={() => openPicker(true)}
+						className="rounded-md middle justify-center space-x-2  bg-red-400 text-center px-4 p-3 h-12 mt-8 w-ful"
+
+					>
+						<div className="plus ">
+									<BiImage className="text-red-50 font-std-book" />
+								</div>
+						<p className="text-sm text-gray-50  capitalize">Select store banner</p>
 					</div>
 
 					<div className="button-group middle space-x-6">
-						<Button
+						{/* <Button
 							text="create"
-							onClick={submitProduct}
+							onClick={}
 							isLoading={false}
 							disabled={!newProductDetails}
 							customClass="update-button "
 							full={true}
-						/>
+						/> */}
+
+						<div
+							role="button"
+							onClick={() => setShow((p) => !p)}
+							className="rounded-md  bg-red-400 text-center px-4 p-3 h-12 mt-8 w-full"
+						>
+							<p className="text-sm text-gray-50  capitalize">create</p>
+						</div>
 						{!true && <Text text={'create success'} type="success" customClass="" />}
 					</div>
 				</div>
@@ -175,7 +218,12 @@ const AdminProducts: NextPage = () => {
 			</div>
 
 			<BottomNav />
-			<StoreModal visibility={true}/>
+			<StoreModal
+				visibility={showModal}
+				isLoading={isLoading}
+				setShow={() => setShow((p) => !p)}
+				create={create}
+			/>
 
 			{/* <Modal visibility={true}/> */}
 		</div>

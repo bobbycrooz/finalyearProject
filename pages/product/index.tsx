@@ -73,7 +73,7 @@ const Mycart = () => {
 
 				<div className="product-info mt-4 p-3 space-y-2">
 					<div className="name-like between">
-						<Text type="title" text={'Oraimo free pod 3'} />
+						<Text type="title" text={currentProduct?.name} />
 						<div role={'button'} onClick={() => setLiked(!liked)} className="heart">
 							{liked ? (
 								<AiFillHeart className="text-red-500 text-3xl " />

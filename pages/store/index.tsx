@@ -13,6 +13,7 @@ import { getCart, updateCart } from '@axios/cart';
 import SkelectonLoader from '@components/SkelectonLoader';
 import Nothing from '@components/Nothing';
 import CartItem from './new-store';
+import SecondAdvertBanner from '@sections/SecondAdvertBanner';
 
 // delete add update
 
@@ -64,6 +65,13 @@ const Mycart = () => {
 					))}
 				</div>
 			</div>
+			{/*  */}
+
+			<div className="second-banner">
+				<SecondAdvertBanner />
+			</div>
+
+			{/*  */}
 
 			<div className="section-card  bg-green-400 flex flex-col stack">
 				<h1 className="text-sm w-full text-center text-gray-400">
@@ -72,7 +80,9 @@ const Mycart = () => {
 				</h1>
 
 				<Link href={'/store/new-store'}>
-					<Button text="get started" full />
+					<div className="rounded-md  bg-red-400 text-center px-4 p-3 h-12">
+						<p className="text-xs text-gray-50  capitalize">get Started</p>
+					</div>
 				</Link>
 			</div>
 

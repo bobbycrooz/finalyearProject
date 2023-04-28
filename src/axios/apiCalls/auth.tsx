@@ -18,7 +18,7 @@ export function userLogin(data: UserTypes) {
 export function creatUser(data: UserTypes) {
 	// console.log('look i got here');
 	return service({
-		url: '/v1/auth/create-user',
+		url: '/v1/auth/register',
 		method: 'post',
 		data: data
 	});

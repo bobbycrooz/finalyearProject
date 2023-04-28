@@ -65,7 +65,7 @@ service.interceptors.response.use(
 
 	function (error) {
 		const { response } = error;
-		console.log(response, 'this error is comming from response interceptor');
+		// console.log(response, 'this error is comming from response interceptor');
 
 		// check if error is an axios error
 		// if (error?.name && error.name === 'AxiosError') {

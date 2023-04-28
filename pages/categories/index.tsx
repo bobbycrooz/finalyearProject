@@ -19,6 +19,7 @@ import { RiFilter2Fill } from 'react-icons/ri';
 import { BiSort } from 'react-icons/bi';
 import Carousel from '@components/Carousel';
 import ProductList from '@components/ProductList';
+import SectionLoader from '@components/SectionLoader';
 
 const Category = () => {
 	const [val, setVal] = useState(1);
@@ -27,35 +28,46 @@ const Category = () => {
 	const { setProducts, products } = useProducts();
 	const [result, setResult] = useState<[]>([]);
 	const { pathname, query } = useRouter();
+	const [showFilterList, setShowFL] = React.useState(false);
 
-	const categorySearchValue = query.name;
-	console.log(categorySearchValue);
+	const categorySearchValue = query.cat;
+	const filterBy = ['mobile phone', 'accessories', 'computers','laptops'];
+
+	function handleFilterBy(key: string) {
+
+		filterByCat(key)
+		handleShowFilterList()
+	}
+
+	function handleShowFilterList() {
+		setShowFL((p) => !p);
+	}
+
 
 	// setCategoryName(String(categorySearchValue).toLowerCase());
 
 	// handlers
 
 	function filterByCat(categoryName: string) {
-		console.log('filter start');
 
-		setCategoryName(categoryName);
-		console.log('here is wjat you are looking for:', categoryName);
+		if(categoryName) setCategoryName(categoryName);
+
+		
 
 		let filteredData = products?.filter((item: { category: string }) => item.category == categoryName);
 
 		if (filteredData) {
-			console.log(filteredData);
+			console.log(
+				filteredData, 'the filtered data'
+			);
+			
 
 			setResult(filteredData);
-			console.log('done');
 		}
-		console.log('filter ends and your result was based on ', currentCategoryName);
 	}
 
-	// console.log(query, 'before useEffect');
 
 	useEffect(() => {
-		// compute result for category name
 		filterByCat(String(categorySearchValue).toLowerCase());
 	}, [pathname, categorySearchValue]);
 
@@ -67,14 +79,14 @@ const Category = () => {
 
 			{/* PAGE HEADER */}
 			<div className="section-card">
-				<h1 className="w-full header-big text-center font-std-medium">Fashion Store</h1>
+				<h1 className="w-full header-big text-center font-std-medium capitalize">{String(categorySearchValue) || "Categories"}</h1>
 
-				<p className="body w-full text-center">1-40 of 1000 results</p>
+				{/* <p className="body w-full text-center">1-40 of 1000 results</p> */}
 			</div>
 
 			{/* FILTER SECTION */}
 			<div className="section-card middle justify-around  px-6 ">
-				<button className="filter middle px-6 space-x-2">
+				<button onClick={handleShowFilterList} className="filter middle px-6 space-x-2">
 					<RiFilter2Fill />
 					<h1 className="button_text">FILTER</h1>
 				</button>
@@ -86,6 +98,24 @@ const Category = () => {
 					<h1 className="button_text">SORT</h1>
 				</button>
 			</div>
+			{showFilterList && (
+					<div className="section-card mt-1">
+						<ul className="filterList  p-1 space-y-2">
+							{filterBy.map((i, k) => (
+								<li
+								role='button'
+								onClick={() => handleFilterBy(i)}
+									key={k}
+									className={`fil_item p-2 ${
+										k != 2 && 'border-b'
+									} text-gray-500 font-std-medium  capitalize`}
+								>
+									{i}
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
 
 			{/* CTO BANNER */}
 			<div className="cto_banner w-full h-28  "></div>
@@ -97,7 +127,9 @@ const Category = () => {
 
 			{/* PRODUCT LISTING */}
 			<div className="w-full mt-4">
-				<ProductList listType="list" />
+				
+
+				{result.length > 0  ? (<ProductList listType="list" data={result} />) : (<SectionLoader/>)}
 			</div>
 
 			<div className="space w-full h-[100px]"></div>

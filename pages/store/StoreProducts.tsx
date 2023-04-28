@@ -23,65 +23,23 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Link from 'next/link';
+import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 'react';
 
 // interface PropsTypes {
 // 	text: string;
 // }
 
-const flashSales = [
-	{
-		name: 'Oraimo freebud 3 filled with more',
-		flashPrice: '# 36,000',
-		countLeft: '40',
-		originalPrice: '50,000',
-		img: freepod
-	},
+const StoreProducts = ({ storeProducts }: { storeProducts?: any }) => {
+	console.log(storeProducts, "-----------------");
 
-	{
-		name: 'Oraimo freebud 3 filled with more',
-		flashPrice: '# 36,000',
-		countLeft: '40',
-		originalPrice: '50,000',
-		img: headset
-	},
+	function Img(str: any) {
+		let thumbnail = str[0];
 
-	{
-		name: 'Oraimo freebud 3 filled with more',
-		flashPrice: '# 36,000',
-		countLeft: '40',
-		originalPrice: '50,000',
-		img: freepod
-	},
-
-	{
-		name: 'Oraimo freebud 3 filled with more',
-		flashPrice: '# 36,000',
-		countLeft: '40',
-		originalPrice: '50,000',
-		img: headset
-	},
-
-	{
-		name: 'Oraimo freebud 3 filled with more',
-		flashPrice: '# 36,000',
-		countLeft: '40',
-		originalPrice: '50,000',
-		img: headset
+		return String(thumbnail);
 	}
-];
-
-const StoreProducts = () => {
 	return (
 		<div className=" w-full py-1">
-			<div className="row flex justify-between">
-			{/* <h1 className="capitalize  font-std-medium text-gray-500">products in store</h1> */}
-				
-
-				{/* <h1 className="ends text-red mr-6">
-					<strong className="text-gray">Ends:</strong>
-					00 - 00 - 00
-				</h1> */}
-			</div>
+		
 
 			<div className="carousel-section  flash-sales-carousel mt-1">
 				<Swiper
@@ -101,37 +59,58 @@ const StoreProducts = () => {
 					// onSlideChange={() => console.log('slide change')}
 					tag={'div'}
 				>
-					{flashSales.map((item, index) => (
-						<SwiperSlide key={index + 'yter'} className="rounded-md shadow bg-white">
-							<Link href={'/product?=sjfiaoidfhkasdhfk'}>
-								<div>
-									<div className="centered  p-2 product-image-box">
-										<Image
-											alt="product image"
-											src={item.img}
-											height={80}
-											width={70}
-										/>
-									</div>
-
-									<div className="product-details p-2">
-										<Text text={item.name} />
-										<div className="price-row flex items-center ">
-											<h1 className="text-blue text-sm">
-												{item.flashPrice}
-											</h1>
-
-											<p className="text-gray original-price text-xs ml-3">
-												{item.originalPrice}
-											</p>
+					{storeProducts.map(
+						(
+							item: any,
+							index: string
+						) => (
+							<SwiperSlide
+								key={index + 'yter'}
+								className="rounded-md shadow border border-red-100 bg-red-50"
+							>
+								<Link href={`/product?=${item?._id}`}>
+									<div>
+										<div className="centered  p-2 product-image-box w-full h-[100px] ">
+											<div className="relative w-full h-full">
+												{item.imageUrl[0] !== undefined ? (
+													<Image
+														alt=""
+														src={Img(item.imageUrl)}
+														// height={80}
+														// width={70}
+														layout="fill"
+													/>
+												) : (
+													<Image
+														alt=""
+														src={'/stores/store-phones.webp'}
+														// height={80}
+														// width={70}
+														layout="fill"
+													/>
+												)}
+											</div>
 										</div>
 
-										<Text text={`${item.countLeft} items left`} />
+										<div className="product-details p-2">
+											<Text text={item.name} />
+											<div className="price-row flex items-center ">
+												<h1 className="text-blue text-sm">
+													{item.price}
+												</h1>
+
+												<p className="text-gray original-price text-xs ml-3">
+													{item.initialPrice}
+												</p>
+											</div>
+
+											<Text text={`5 items left`} />
+										</div>
 									</div>
-								</div>
-							</Link>
-						</SwiperSlide>
-					))}
+								</Link>
+							</SwiperSlide>
+						)
+					)}
 				</Swiper>
 			</div>
 		</div>

@@ -43,13 +43,13 @@ const Home = () => {
 		},
 
 		{
-			name: 'computers',
+			name: 'accessories',
 			icon: <RiComputerLine className="text-[24px]" />,
 			link: '/computers'
 		},
 
 		{
-			name: 'phone',
+			name: 'phones',
 			icon: <HiOutlineDeviceMobile className="text-[24px]" />,
 			link: '/phones'
 		},
@@ -66,7 +66,7 @@ const Home = () => {
 		'/stores/store-phones.webp',
 		'/carousel/store1.jpg',
 		'/stores/store-phones.webp'
-	]
+	];
 
 	// console.log(products)
 
@@ -84,8 +84,6 @@ const Home = () => {
 			toggleLoader(false);
 		}, 200);
 	}, []);
-
-
 
 	if (setLoader) {
 		return <Loader visibility={true} />;
@@ -123,34 +121,31 @@ const Home = () => {
 			{/* TOP 4 STORES */}
 			<div className="stores w-full   px-4">
 				<div className="store_card-container grid grid-cols-2 gap-2">
-					{storeBanner
-						.map((i, key) => (
-							<div
-								className="store_card w-full h-40   rounded relative"
-								key={key}
-							>
-
-								{/* STORE BANNER */}
-								<Image alt='store banner' src={i} layout='fill' />
-								{/* STORE CARD BODY */}
-								<div className="store_card-  w-full h-full flex justify-center ">
-									{!true && (
-										<div className="mt-3 text-center">
-											<h1 className="header">bobmart</h1>
-											<p className='text-xs text-gray-400'>all kind of gadgets and accessories</p>
-										</div>
-									)}
-								</div>
+					{storeBanner.map((i, key) => (
+						<div className="store_card w-full h-40   rounded relative" key={key}>
+							{/* STORE BANNER */}
+							<Image alt="store banner" src={i} layout="fill" />
+							{/* STORE CARD BODY */}
+							<div className="store_card-  w-full h-full flex justify-center ">
 								{!true && (
-									<div className=" absolute bottom-2 px-5 w-full centered">
-										<button className="px-3 middle p-1 br rounded-sm bg-yellow text-black ">
-											<p className="shop  mb-1">shop now</p>
-											<BiChevronRight className="text-2xl text-gray" />
-										</button>
+									<div className="mt-3 text-center">
+										<h1 className="header">bobmart</h1>
+										<p className="text-xs text-gray-400">
+											all kind of gadgets and accessories
+										</p>
 									</div>
 								)}
 							</div>
-						))}
+							{!true && (
+								<div className=" absolute bottom-2 px-5 w-full centered">
+									<button className="px-3 middle p-1 br rounded-sm bg-yellow text-black ">
+										<p className="shop  mb-1">shop now</p>
+										<BiChevronRight className="text-2xl text-gray" />
+									</button>
+								</div>
+							)}
+						</div>
+					))}
 				</div>
 			</div>
 
@@ -165,9 +160,7 @@ const Home = () => {
 				<Product data={products} />
 			</div>
 
-			<div className="second-banner">
-				<SecondAdvertBanner />
-			</div>
+		
 
 			<div className="collections">
 				<Collections />
