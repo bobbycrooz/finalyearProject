@@ -11,7 +11,7 @@ import category from '@images/admin/category.svg';
 import TopNav from '@components/topNav';
 import BottomNav from '@components/bottomNav';
 import headset from '@images/headset.png';
-import { Key, SetStateAction, useState } from 'react';
+import { Key, SetStateAction, useEffect, useState } from 'react';
 import CustomField from '@widget/CustomInput';
 import { createStore } from '@axios/stores';
 import { useAuth } from '@contexts/authContext';
@@ -21,6 +21,7 @@ import StoreModal from './storeModal';
 import { v4 as uuidv4 } from 'uuid';
 import { useRouter } from 'next/router';
 import { BiImage } from 'react-icons/bi';
+import { useStores } from '@contexts/storeContext';
 
 let tempArry: any[] = [];
 
@@ -28,10 +29,12 @@ const AdminProducts: NextPage = () => {
 	const [showPicker, openPicker] = useState(false);
 	const [showModal, setShow] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const { push } = useRouter();
+	const [isUpdating, setUpdating] = useState(false);
+	const { stores, fetchStoreProducts, storeProducts } = useStores();
+
+	const { push, query } = useRouter();
 	// const [isFlash, setIsFlash] = useState(false);
 	// const [isAvailable, setIsAvalable] = useState(false);
-
 
 	const { loggedInUser } = useAuth();
 
@@ -98,6 +101,23 @@ const AdminProducts: NextPage = () => {
 		console.log(serverResponse.message);
 	}
 
+	useEffect(() => {
+		if (query.id) {
+			setUpdating(true);
+			// @ts-ignore
+			const currentStoreToUpdate = stores.filter((i, a) => i.storeId === query.id)
+
+			setNewProDetails({
+				...newProductDetails,
+				...currentStoreToUpdate[0]
+			});
+		}
+	}, []);
+
+
+	console.log('this user is updating', newProductDetails);
+
+
 	return (
 		<div className="bg-admin add_new  w-screen relative">
 			<SEO title="home" />
@@ -119,6 +139,7 @@ const AdminProducts: NextPage = () => {
 
 				<div className="uploaded-image-container relative">
 					{tempArry && <Image layout="fill" src={tempArry[0]} alt={'produuct image'} />}
+					{isUpdating &&  newProductDetails?.cover?.length > 0  && <Image layout="fill" src={newProductDetails?.cover[0]} alt={'produuct image'} />}
 				</div>
 
 				<div className="product-details-card space-y-4">
@@ -127,13 +148,13 @@ const AdminProducts: NextPage = () => {
 						label={'Store name'}
 						type={'text'}
 						name={'name'}
-						placeholder="bobmart"
+						placeholder={isUpdating && newProductDetails?.name || "eg. bobmart" }
 					/>
 					<CustomField
 						change={getDetails}
 						label={'Description'}
 						type={'textarea'}
-						placeholder="About your store"
+						placeholder={isUpdating && newProductDetails?.description || "eg. All kind of gadgets." }
 						name={'description'}
 					/>
 					<CustomField
@@ -185,11 +206,10 @@ const AdminProducts: NextPage = () => {
 					<div
 						onClick={() => openPicker(true)}
 						className="rounded-md middle justify-center space-x-2  bg-red-400 text-center px-4 p-3 h-12 mt-8 w-ful"
-
 					>
 						<div className="plus ">
-									<BiImage className="text-red-50 font-std-book" />
-								</div>
+							<BiImage className="text-red-50 font-std-book" />
+						</div>
 						<p className="text-sm text-gray-50  capitalize">Select store banner</p>
 					</div>
 
@@ -208,7 +228,7 @@ const AdminProducts: NextPage = () => {
 							onClick={() => setShow((p) => !p)}
 							className="rounded-md  bg-red-400 text-center px-4 p-3 h-12 mt-8 w-full"
 						>
-							<p className="text-sm text-gray-50  capitalize">create</p>
+							<p className="text-sm text-gray-50  capitalize">{isUpdating  ? "Update" : "create"}</p>
 						</div>
 						{!true && <Text text={'create success'} type="success" customClass="" />}
 					</div>

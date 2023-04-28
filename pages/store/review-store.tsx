@@ -21,7 +21,7 @@ import Product from '@sections/products';
 import { useProducts } from '@contexts/productContext';
 import Related from '@sections/relatedProduct';
 import StoreProducts from './StoreProducts';
-import { BiPlug, BiPlus, BiStore } from 'react-icons/bi';
+import { BiPencil, BiPlug, BiPlus, BiStore } from 'react-icons/bi';
 import Link from 'next/link';
 import { useStores } from '@contexts/storeContext';
 import { useAuth } from '@contexts/authContext';
@@ -48,9 +48,8 @@ const StoreReview = () => {
 	}
 
 	useEffect(() => {
-		getStorePro()
-	}, [])
-	
+		getStorePro();
+	}, []);
 
 	return (
 		<div className="bg-gray-50 add_new  w-screen h-screen relative ">
@@ -126,8 +125,36 @@ const StoreReview = () => {
 						</div>
 						<hr className="w-full my-2" />
 						<div className="">
-							{storeProducts.length > 0 ? <StoreProducts storeProducts={storeProducts} /> : <SectionLoader message={'No product in this store'} />}
+							{storeProducts.length > 0 ? (
+								<StoreProducts storeProducts={storeProducts} />
+							) : (
+								<SectionLoader message={'No product in this store'} />
+							)}
 						</div>
+					</div>
+
+					<div className="button_group middle w-full  justify-between mt-4 fixed bottom-[80px] left-0 p-2">
+						<Link href={`/store/new-store`}>
+							<div className="add_btn middle space-x-2 border border-red-400 w-full centered p-2 rounded-sm px-4 bg-red-50 text-red-400">
+								<div className="plus ">
+									<BiStore className="text-red-400 font-std-book" />
+								</div>
+								<button className="add text-xs"> New Store</button>
+							</div>
+						</Link>
+
+						<div className="w-2"></div>
+
+
+						<Link href={`/store/new-store?id=${stores[0].storeId}`}>
+							<div className="add_btn middle space-x-2 border border-red-400 p-2 w-full centered rounded-sm px-4 bg-red-400 text-red-50">
+								<div className="plus ">
+									<BiPencil className="text-red-50 font-std-book" />
+								</div>
+								<button className="add text-xs">Update store</button>
+							</div>
+						</Link>
+
 					</div>
 				</div>
 			)}

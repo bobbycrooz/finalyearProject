@@ -41,28 +41,20 @@ const StoreProducts = ({ storeProducts }: { storeProducts?: any }) => {
 		<div className=" w-full py-1">
 		
 
-			<div className="carousel-section  flash-sales-carousel mt-1">
+			<div className="carousel-section  flash-sales-carousel  mt-1">
 				<Swiper
-					// install Swiper modules
-					modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]}
+					modules={[ EffectFade]}
 					spaceBetween={10}
 					slidesPerView={2.5}
-					// effect="fade"
-					// pagination={{ clickable: true }}
-					loop={true}
-					autoplay={{
-						delay: 2000,
-						disableOnInteraction: false
-					}}
-					// scrollbar={{ draggable: true }}
-					// onSwiper={(swiper) => console.log(swiper)}
-					// onSlideChange={() => console.log('slide change')}
+				
+				
+					
 					tag={'div'}
 				>
 					{storeProducts?.map(
 						(
 							item: any,
-							index: string
+							index: number
 						) => (
 							<SwiperSlide
 								key={index + 'yter'}
