@@ -50,6 +50,8 @@ const CartProvider = ({ children }: any) => {
 		if (!error && data) {
 			// console.log(data);
 			return setCartItems(data);
+			console.log('i fetched all user cart item from refreshCart');
+			
 		}
 
 		return;
