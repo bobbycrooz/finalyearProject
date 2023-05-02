@@ -29,38 +29,39 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 
 	function Img(str: any) {
 		let thumbnail = str[0];
-	
+
 		return String(thumbnail);
 	}
-	
-	console.log(item?.imageUrl[0], " -------");
-	
+
+	// console.log(, " -------");
 
 	return (
 		<>
 			<div className="product_item w-full p-2 stack bg-white">
 				{/* ITEM DETAILS */}
 				<div className="row flex items-start h-[100px] ">
-					<div className="item_image relative h-full w-1/2 ">
-					{item?.imageUrl[0] !== undefined ? (
-												<Image
-													alt=""
-													src={Img(item.imageUrl[0])}
-													height={80}
-													width={70}
-													layout="intrinsic"
-												/>
-											) : (
-												<Image
-													alt=""
-													src={'/products/watch1.webp'}
-													height={80}
-													width={70}
-													layout="intrinsic"
-													className="br"
-												/>
-											)}
-												{/* <Image
+					<div className="item_image relative h-full w-1/2  p-2">
+						<div className="w-full h-full">
+							{item?.productID?.imageUrl[0].length > 0 ? (
+								<Image
+									alt=""
+									src={Img(item?.productID?.imageUrl)}
+									// height={80}
+									// width={70}
+									layout="fill"
+								/>
+							) : (
+								<Image
+									alt=""
+									src={'/products/watch1.webp'}
+									height={80}
+									width={70}
+									layout="intrinsic"
+									className="br"
+								/>
+							)}
+						</div>
+						{/* <Image
 													alt=""
 													src={'/products/watch1.webp'}
 													// height={80}
@@ -95,7 +96,9 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 
 					<div className="price_box">
 						<h1 className="text-lg font-std-medium ">#{item?.total}</h1>
-						<p className="text-xs font-std-book">#{item?.price} x {item?.quantity} items</p>
+						<p className="text-xs font-std-book">
+							#{item?.price} x {item?.quantity} items
+						</p>
 					</div>
 				</div>
 
@@ -103,13 +106,16 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 
 				<div className="button_group justify-center flex">
 					<Link href={`/product?id=${item?.productID?._id}`}>
-					<button  className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
-						<Love />
-						<p> view</p>
-					</button>
+						<button className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
+							<Love />
+							<p> view</p>
+						</button>
 					</Link>
 					<div className="space w-4"></div>
-					<button onClick={() => submitValue(item?.prodctID?._id, 0)} className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
+					<button
+						onClick={() => submitValue(item?.prodctID?._id, 0)}
+						className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2"
+					>
 						<Buttt />
 						<p>remove</p>
 					</button>
