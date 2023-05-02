@@ -37,10 +37,23 @@ const CartProvider = ({ children }: any) => {
 		}
 	}, [loggedInUser]);
 
-	// getCart
-	// async function getUserCartItem() {
 
-	// };
+
+	async function refreshCart() {
+		const {
+			// @ts-ignore
+			error,
+			// @ts-ignore
+			serverResponse: { data }
+		} = await getCart();
+
+		if (!error && data) {
+			// console.log(data);
+			return setCartItems(data);
+		}
+
+		return;
+	}
 
 	// updateCart
 	async function updateCartItem(productID: string, quantity: number) {
@@ -69,12 +82,12 @@ const CartProvider = ({ children }: any) => {
 		if (loggedInUser) {
 			getUserCartItem();
 		}
-
-		console.log('i fected user cart by default from the context useEffect');
 	}, [getUserCartItem, loggedInUser]);
 
 	return (
-		<CartContext.Provider value={{ cartitems, setCartItems, updateCartItem }}>{children}</CartContext.Provider>
+		<CartContext.Provider value={{ cartitems, setCartItems, updateCartItem, refreshCart }}>
+			{children}
+		</CartContext.Provider>
 	);
 };
 

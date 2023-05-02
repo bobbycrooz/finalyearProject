@@ -12,7 +12,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 	const [updating, setUpdatting] = React.useState(false);
 	// const cartRef = useRef();
 	const [baseQtty, setQtty] = React.useState(1);
-	const { updateCartItem } = useCarts();
+	const { updateCartItem, refreshCart } = useCarts();
 	// function currentItemCount(id: string) {}
 
 	function QttyChangeHandler(e: any, qtty: number = baseQtty) {
@@ -22,7 +22,9 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 
 	async function submitValue(productID: string, quantity: number) {
 		await updateCartItem(productID, quantity);
-		// console.log();
+
+		await refreshCart()
+		
 
 		setUpdatting(false);
 	}
