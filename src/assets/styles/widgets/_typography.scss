@@ -2,13 +2,15 @@
 	@apply font-std-book text-sm;
 
 	&.title {
-		@apply text-sm font-std-book text-gray-500
+		@apply text-sm font-std-book text-neutral-600;
 	}
 
 	&.subtitle {
-		
+		@apply text-sm font-std-medium text-neutral-500;
+	}
 
-		@apply text-sm font-std-book text-gray-500
+	&.body {
+		@apply text-xs font-std-book text-neutral-500;
 	}
 
 	&.caps {
@@ -24,13 +26,6 @@
 	}
 }
 
-// .title {
-// 	@apply font-std-bold text-lg;
-// }
-
-// .subtitle {
-// 	@apply font-std-medium text-[16px];
-// }
 
 .one {
 	border: 1px solid red;
@@ -77,3 +72,5 @@
 		@apply text-gray-200 font-bold text-xl;
 	}
 }
+
+

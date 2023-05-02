@@ -56,7 +56,7 @@ const StoreReview = () => {
 			<SEO title="Store overview" />
 
 			{stores?.length === 0 ? (
-				<div className="h-screen bg-red-50  pt-4">
+				<div className="h-screen bg-red-50  ">
 					<div className="section-card centered flex flex-col ">
 						<p className="name text-gray-600 font-std-medium  ">You dont have a store yet</p>
 

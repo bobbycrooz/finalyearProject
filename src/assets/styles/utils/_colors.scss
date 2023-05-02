@@ -1,7 +1,19 @@
-$blue: #6610F2;
-$green: #11D83D;
-$red: #F21010;
-$gray: #717171;
-$black: #080113;
-$body: #FFFFFF;
-$yellow: #F2DB10;
+$primary: #343a40;
+$secondary: #b45309;
+$tertiary: #f5f5f5;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f5f5f5;
+$dark: #343a40;
+$white: #ffffff;
+$black: #000000;
+
+.tn-6{
+      @apply  text-neutral-600;
+}
+
+.tn-5{
+      @apply  text-neutral-500;
+}

@@ -29,6 +29,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import Link from 'next/link';
+import SectionLoader from '@components/SectionLoader';
 
 const categoriesEnum = {
 	LAPTOPS: 'laptops',
@@ -132,76 +133,80 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 	return (
 		<div className=" w-full  my-4 ">
 			{/* HEADER ROW */}
-			<div className="row flex justify-between bg-admin p-2 rounded-t-md">
-				<Text type="title" customClass="" caps text="best selling " />
-
-				<h1 className="capitalze">see more items</h1>
+			<div className="row flex justify-between bg-admin px-2 rounded-t-md">
+				<h1 className="capitalze text-neutral-600 font-std-medium">Best selling</h1>
+				<h1 className="capitalze underline text-amber-700 text-xs">view more</h1>
 			</div>
 
 			{/* PRODUCT CAROUSEL */}
-			<div className="carousel-section  flash-sales-carousel mt-2 ">
-				<Swiper
-					modules={[Navigation, Pagination, Scrollbar, EffectFade]}
-					spaceBetween={10}
-					slidesPerView={2.2}
-					loop={true}
-					// autoplay={{
-					// 	delay: 2000,
-					// 	disableOnInteraction: false
-					// }}
-					tag={'div'}
-				>
-					{/* @ts-ignore */}
-					{products.map((item, index) => (
-						<SwiperSlide key={index + 'yter'} className="rounded-md shadow  relative">
-							<Link href={`/product?id=${item._id}`}>
-								<div>
-									{/* PRODUCT IMAGE */}
-									<div className="centered  p-2 product-image-box h-[100px]  ">
-										{item.imageUrl[0] !== undefined ? (
-											<Image
-												alt=""
-												src={Img(item.imageUrl)}
-												height={80}
-												width={70}
-												layout="intrinsic"
-											/>
-										) : (
-											<Image
-												alt=""
-												src={headset}
-												height={80}
-												width={70}
-												layout="intrinsic"
-											/>
-										)}
-									</div>
 
-									{/* PRODUCT DETAILS */}
-									<div className="product-details p-2">
-										<Text text={item.name} />
-										<div className="price-row flex items-center ">
-											<h1 className="text-blue text-sm">
-												{item.price}
-											</h1>
-
-											<p className="text-gray original-price text-xs ml-3">
-												{item.initialPrice}
-											</p>
+			{products.length > 0  ? (
+				<div className="carousel-section  flash-sales-carousel mt-2 br">
+					<Swiper
+						modules={[Navigation, Pagination, Scrollbar, EffectFade]}
+						spaceBetween={10}
+						slidesPerView={2.2}
+						loop={true}
+						// autoplay={{
+						// 	delay: 2000,
+						// 	disableOnInteraction: false
+						// }}
+						tag={'div'}
+					>
+						{/* @ts-ignore */}
+						{products.map((item, index) => (
+							<SwiperSlide key={index + 'yter'} className="rounded-md shadow  relative">
+								<Link href={`/product?id=${item._id}`}>
+									<div>
+										{/* PRODUCT IMAGE */}
+										<div className="centered  p-2 product-image-box h-[100px]  ">
+											{item.imageUrl[0] !== undefined ? (
+												<Image
+													alt=""
+													src={Img(item.imageUrl)}
+													height={80}
+													width={70}
+													layout="intrinsic"
+												/>
+											) : (
+												<Image
+													alt=""
+													src={headset}
+													height={80}
+													width={70}
+													layout="intrinsic"
+												/>
+											)}
 										</div>
 
-										{/* <Text text={`${item.countLeft} items left`} /> */}
+										{/* PRODUCT DETAILS */}
+										<div className="product-details p-2">
+											<Text text={item.name} />
+											<div className="price-row flex items-center ">
+												<h1 className="text-blue text-sm">
+													{item.price}
+												</h1>
+
+												<p className="text-gray original-price text-xs ml-3">
+													{item.initialPrice}
+												</p>
+											</div>
+
+											{/* <Text text={`${item.countLeft} items left`} /> */}
+										</div>
 									</div>
-								</div>
-							</Link>
-						</SwiperSlide>
-					))}
-				</Swiper>
-			</div>
+								</Link>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				</div>
+			) : (
+				<SectionLoader />
+			)}
 
 			{/* BY CATEGORIES */}
 			<div className="row flex justify-between bg-admin p-2 rounded-t-md mt-2">
-				<Text type="title" customClass="" caps text="by categories " />
+				<h1 className="capitalze text-neutral-600 font-std-medium">By Categories</h1>
 
 				{/* <h1 className="capitalze">see more items</h1> */}
 			</div>

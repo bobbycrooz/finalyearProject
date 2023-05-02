@@ -55,9 +55,8 @@ const NewArrival = () => {
 	return (
 		<div className=" w-full py-4 my-6 new-arriaval-container">
 			<div className="row flex justify-between px-6">
-				<Text type="title" customClass="" text="New Arrival" />
-
-				<h1 className="ends text-blue">view more</h1>
+				<h1 className="capitalze text-neutral-600 font-std-medium">New Items</h1>
+				<h1 className="capitalze underline text-amber-700 text-xs">view more</h1>
 			</div>
 
 			<div className="carousel-section  new-arrival-carousel mt-4">
@@ -83,7 +82,7 @@ const NewArrival = () => {
 					>
 						{newArrivalProducts?.map((item, index) => (
 							<SwiperSlide key={index + 'yter'} className="rounded-md shadow ">
-								<Link href={`/product?id=${item._id}`} >
+								<Link href={`/product?id=${item._id}`}>
 									<>
 										<div className="centered  p-2 product-image-box ">
 											{item.imageUrl[0] !== undefined ? (

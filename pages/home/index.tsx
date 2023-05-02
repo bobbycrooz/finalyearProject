@@ -32,31 +32,31 @@ const Home = () => {
 	const categoryArr = [
 		{
 			name: 'All',
-			icon: <CgMoreO className="text-[24px]" />,
+			icon: <CgMoreO className="text-[24px] text-neutral-600" />,
 			link: '/more'
 		},
 
 		{
 			name: 'fashion',
-			icon: <GiMailShirt className="text-[24px]" />,
+			icon: <GiMailShirt className="text-[24px] text-neutral-600" />,
 			link: '/fashion'
 		},
 
 		{
 			name: 'accessories',
-			icon: <RiComputerLine className="text-[24px]" />,
+			icon: <RiComputerLine className="text-[24px] text-neutral-600" />,
 			link: '/computers'
 		},
 
 		{
 			name: 'phones',
-			icon: <HiOutlineDeviceMobile className="text-[24px]" />,
+			icon: <HiOutlineDeviceMobile className="text-[24px] text-neutral-600" />,
 			link: '/phones'
 		},
 
 		{
 			name: 'more',
-			icon: <BiCertification className="text-[24px]" />,
+			icon: <BiCertification className="text-[24px] text-neutral-600" />,
 			link: '/Deals'
 		}
 	];
@@ -105,7 +105,7 @@ const Home = () => {
 						className="category-item w-full flex flex-col items-center "
 					>
 						{item.icon}
-						<h1 className="category-name capitalize text-sm">{item.name}</h1>
+						<h1 className=" capitalize text-xs text-neutral-600 font-std-book mt-1">{item.name}</h1>
 					</div>
 				))}
 			</div>

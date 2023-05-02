@@ -12,7 +12,9 @@
 
     &-item {
         width: 100%;
-        @apply flex flex-col items-center justify-center;
+        @apply flex flex-col items-center justify-center ;
+
+    
 
         &.admin {
             @apply border-b shadow border-blue-400 rounded-xl h-full w-full bg-gray-200 centered;

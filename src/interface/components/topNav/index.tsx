@@ -93,32 +93,48 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 			<div className="top-nav">
 				{/* NAV ITEM ROW */}
 				<div className="row px-4 py-3 flex items-center justify-between ">
-					{!showBackBtn() && <div role="button" onClick={() => history.back()} className="back  p-2 ">
-						<BiArrowBack className="text-gray-60 text-2xl" />
-					</div>}
+					{!showBackBtn() && (
+						<div role="button" onClick={() => history.back()} className="back  p-2 ">
+							<BiArrowBack className="text-gray-60 text-2xl" />
+						</div>
+					)}
 
 					{/* LOGO AND HAMBURGER ICON */}
 					<div className="logo-burger flex">
 						{showBackBtn() && (
 							<div className="hambuger">
-								<Hamburger toggled={openMenu} toggle={setOpenMenu} size={20} />
+								<Hamburger toggled={openMenu} color='#525252' toggle={setOpenMenu} size={20} />
 							</div>
 						)}
 
-						<div className="logo middle space-x-1">
+						{/* <div className="logo middle space-x-1">
 							{!true && (
-								<div className="rounded-full w-8 h-8 bg-blue-500 text-white centered">
-									<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
-								</div>
+								<div className="rounded-full w-8 h-8 bg-amber-600 text-white centered relative">
+								<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
+								<div className="absolute w-6 bg-amber-600 h-1 bottom-0 -right-2"></div>
+							</div>
 							)}
 							<h1 className="logotext font-std-medium text-2xl">campuStore</h1>
+						</div> */}
+
+						{/* LOGO */}
+						<div className="logo middle justify-center space-x-1 mx-auto">
+						{true && (
+								<div className="rounded-full w-8 h-8 bg-amber-600 text-white centered relative">
+								<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
+								<div className="absolute w-6 bg-amber-600 h-1 bottom-0 -right-2"></div>
+							</div>
+							)}
+							<h1 className="logotext font-std-bold text-2xl">
+								campu<span className="text-amber-600">Store</span>
+							</h1>
 						</div>
 					</div>
 
 					{/* CART AND STORE */}
 					<div className="icon-cart space-x-3 flex">
 						<Link href={'/store/review-store'}>
-							<BiStore className="text-[32px] text-gray-500" />
+							<BiStore className="text-[28px] tn-6" />
 						</Link>
 						<Link href={'/cart'}>
 							<div className="cart_badge  relative">
@@ -127,7 +143,7 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 										{cartitems?.items?.length}
 									</div>
 								)}
-								<BiCart className="text-[32px] text-gray-500" />
+								<BiCart className="text-[28px] tn-6" />
 							</div>
 						</Link>
 					</div>

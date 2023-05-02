@@ -85,7 +85,16 @@ const Orders = () => {
 
 			<div className="w-full mt-20 px-2 space-y-3">
 				<div className="section-card space-y-6">
-					<h1 className="subtitle w-full capitalize">update your account details</h1>
+					
+
+					<div
+						//
+						className="border-b border-amber-600  bg-amber-100 text-center px-2 p-3 h-12  w-full"
+					>
+						<p className=" text-amber-600  capitalize font-std-medium">
+							update account details
+						</p>
+					</div>
 
 					<CustomInput
 						change={getDetails}

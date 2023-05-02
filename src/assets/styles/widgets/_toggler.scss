@@ -1,37 +1,38 @@
 .toggler {
-    width: 45px;
-    height: 15px;
-    background-color: $blue;
-    border-radius: 12px;
-    position: relative;
-    transition: all 0.2s linear;
+	width: 45px;
+	height: 15px;
+	background-color: $secondary;
+	border-radius: 12px;
+	position: relative;
+	transition: all 0.2s linear;
+    
 
-    .indicator {
-        width: 25px;
-        background-color: $body;
-        height: 25px;
-        @apply rounded-full centered absolute border border-blue-400;
-        left: 20px;
-        top: -5px;
-        transition: all 0.2s linear;
+	.indicator {
+		width: 25px;
+		background-color: $tertiary;
+		height: 25px;
+		@apply rounded-full centered absolute border border-amber-600;
+		left: 20px;
+		top: -5px;
+		transition: all 0.2s linear;
 
-        &-point {
-            @apply rounded-full;
-            width: 15px;
-            height: 15px;
-            background-color: $blue;
-        }
-    }
+		&-point {
+			@apply rounded-full;
+			width: 15px;
+			height: 15px;
+			background-color: $secondary;
+		}
+	}
 
-    &.off {
-        @apply bg-gray-200;
+	&.off {
+		@apply bg-gray-200;
 
-        .indicator {
-            left: 0px;
-            @apply border border-gray-200;
-            &-point {
-                @apply bg-gray-200;
-            }
-        }
-    }
+		.indicator {
+			left: 0px;
+			@apply border border-gray-200;
+			&-point {
+				@apply bg-gray-200;
+			}
+		}
+	}
 }

@@ -21,7 +21,7 @@ if(visibility){
 						
 					</div>
 					<div className="spinner-logo centered ">
-							<Image src={LogoBag} alt="" height={70} width={95} />
+							{/* <Image src={LogoBag} alt="" height={70} width={95} /> */}
 						</div>
 				</motion.div>
 			</AnimatePresence>

@@ -21,11 +21,11 @@ const InputField = ({ onChangeHandler, label, customClass, placeholder, type, ic
 
 	return (
 		<div className="input-container">
-			<label htmlFor={type}>{label}</label>
+			<label className='text-sm font-std-book text-gray-500' htmlFor={type}>{label}</label>
 
-			<div className="w-full h-14 flex items-center border-b border-gray">
+			<div className="w-full h-14 flex items-center border-b border-amber-600">
 				<div className=" py-2 centered">
-					<Image src={icon} alt="a photo" />
+					{icon && (icon as any)}
 				</div>
 
 				<input
@@ -36,7 +36,7 @@ const InputField = ({ onChangeHandler, label, customClass, placeholder, type, ic
 					// @ts-ignore
 					onChange={(e: any, fieldName: any) => onChangeHandler(e, label.toLowerCase())}
 					{...rest}
-					className={`w-full h-full  px-4 p-2 centered ${customClass}`}
+					className={`w-full h-full  px-4 p-2 centered auth_input ${customClass}`}
 				/>
 			</div>
 		</div>

@@ -20,6 +20,10 @@ import ls from '@utils/localStorage';
 import { useAuth } from '@contexts/authContext';
 import { USER, USER_TEMP } from '@constants';
 import { NotifyTypes } from '@types';
+import { BiLock, BiMessage } from 'react-icons/bi';
+import {RiLockPasswordFill} from 'react-icons/ri';
+import {AiTwotoneMail} from 'react-icons/ai';
+import {HiUser} from 'react-icons/hi';
 
 const Auth: NextPage = () => {
 	// hooks
@@ -195,10 +199,11 @@ const Auth: NextPage = () => {
 			<SEO title="home" />
 			<SoftLoader visibility={isLoading} />
 			<div className="logo middle justify-center space-x-1 mx-auto mt-20 ">
-				<div className="rounded-full w-8 h-8 bg-blue-500 text-white centered">
+				<div className="rounded-full w-8 h-8 bg-amber-600 text-white centered relative">
 					<p className="logo-icon text-xl mb-1 font-std-medium ">c</p>
+					<div className="absolute w-6 bg-amber-600 h-1 bottom-0 -right-2"></div>
 				</div>
-				<h1 className="logotext logoFont text-2xl">campuStore</h1>
+				<h1 className="logotext font-std-bold text-2xl">campu<span className="text-amber-600">Store</span></h1>
 			</div>
 
 			<div
@@ -209,7 +214,7 @@ const Auth: NextPage = () => {
 				{isSigningUp && (
 					<InputField
 						onChangeHandler={getUserDetails}
-						icon={acc}
+						icon={<HiUser className='text-amber-600 text-xl'/>}
 						label="Username"
 						type="text"
 						placeholder="eg. bobby"
@@ -217,7 +222,7 @@ const Auth: NextPage = () => {
 				)}
 
 				<InputField
-					icon={emailIcon}
+					icon={<AiTwotoneMail className='text-amber-600 text-xl' />}
 					onChangeHandler={getUserDetails}
 					label="Email"
 					type="email"
@@ -225,14 +230,14 @@ const Auth: NextPage = () => {
 				/>
 
 				<InputField
-					icon={lock}
+					icon={<RiLockPasswordFill className='text-amber-600 text-xl'/>}
 					onChangeHandler={getUserDetails}
 					label="Password"
 					type="password"
 					placeholder="********"
 				/>
 
-				{!isSigningUp && <Text link="/auth" text="Forget Password" customClass="ml-2 text-right" />}
+				{!isSigningUp && <Text link="/auth" text="Forget Password" customClass="ml-2 text-right text-red-400 font-std-book text-sm underline" />}
 
 				{!!notify.message.length && (
 					<Text text={notify.message} type={notify.type} customClass="text-center" />
@@ -249,17 +254,18 @@ const Auth: NextPage = () => {
 				/>
 
 				<div className="flex items-center mx-auto  justify-center">
-					<Text text={isSigningUp ? 'I have  an account?' : 'Create an account'} />{' '}
+					<Text type='subtitle' text={isSigningUp ? 'I have  an account?' : 'Create an account'} />{' '}
 					<Text
 						onClick={() => setIsSigningUp(!isSigningUp)}
 						text={isSigningUp ? 'Login' : 'here'}
-						customClass="ml-2"
+						customClass="ml-2 text-amber-700 font-std-book text-sm underline"
 					/>
 				</div>
 
 				<Text
 					onClick={() => isGuest()}
 					text="view as guest"
+					type='subtitle' 
 					customClass="uppercase text-center underline"
 				/>
 			</div>

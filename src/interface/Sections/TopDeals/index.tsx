@@ -51,10 +51,10 @@ const TopDeals = () => {
 	return (
 		<div className=" w-full  my-4 ">
 			{/* HEADER ROW */}
-			<div className="row flex justify-between bg-pink-400 p-2 rounded-t-md">
-				<Text type="title" customClass="text-white" text="Top Deals for today" />
+			<div className="row flex justify-between bg-amber-600 p-2 rounded-t-md">
 
-				<h1 className="capitalze">see more items</h1>
+				<h1 className="capitalze text-neutral-50 ">Top Deals</h1>
+				<h1 className="capitalze underline text-neutral-100 text-xs">view more</h1>
 			</div>
 
 			{/* PRODUCT CAROUSEL */}

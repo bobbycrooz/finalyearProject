@@ -1,6 +1,5 @@
 .new-arriaval-container {
-    background-color: #f2db1035;
-
+@apply bg-amber-200;
     .new-arrival-carousel  {
         width: 100%;
         height: auto;
@@ -14,7 +13,6 @@
             // border-radius: 8px;
             // display: flex;
             justify-content: space-between;
-            background-color: $body;
             // background-color: red;
             // transition-timing-function : linear;
             // transition-timing-function : linear;

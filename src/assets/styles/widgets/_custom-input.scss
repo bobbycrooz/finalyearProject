@@ -1,13 +1,12 @@
 .custom-input {
-    // @apply ;
-
-    // &.price{
-    //     @apply  br;
-
-    // }
+  
+    label{
+        @apply text subtitle  capitalize;
+    }
 
     &-filed-container {
         @apply w-full relative h-14 flex items-center;
+
         &.textarea{
         @apply h-20;
 
@@ -34,18 +33,31 @@
             }
 
             &:focus {
-                outline: 1px solid blue;
-                box-shadow: 0px 0px 4px 2px #6710f265;
+                outline: 1px solid #d97706;
+                box-shadow: 0px 0px 4px 2px #d9770665;
             }
 
             &.error {
-                outline: .5px solid $red;
-                box-shadow: 0px 0px 4px 2px $red;
+                outline: .5px solid $danger;
+                box-shadow: 0px 0px 4px 2px $danger;
                 animation: errorJiggle;
                 animation-duration: 0.2s;
                 animation-iteration-count: 2;
             }
         }
+    }
+}
+
+// auth input filed
+.input-container{
+    .auth_input{
+        &::placeholder{
+            @apply text-gray-300 text-sm;
+        }
+
+        @apply text-amber-700 text-lg font-std-book;
+
+
     }
 }
 

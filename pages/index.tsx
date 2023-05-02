@@ -16,22 +16,29 @@ const Home = (props: { isMobile: any }) => {
 	// TODO: to be changes to landing page
 
 	return (
-		<div className=" h-screen w-screen relative  bg-pri">
+		<div className=" h-screen w-screen relative  bg-amber-600">
 			<SEO title="home" />
 
-			<div className="home px-4 ">
+			{/* <div className="home px-4 ">
 				<h1 className="head text-black text-2xl capitalize font-std-bold">
 					campus store ecommerce platform
 				</h1>
 				<p className="font-std-sm">get what you need at your own comfort</p>
-			</div>
+			</div> */}
 
-			<div className="absolute  bottom-6 w-full px-4">
+			<div className="absolute  bottom-11 w-full px-4">
 				<Link href={'/home'}>
 				<button className="w-full rounded-md capitalize p-2 centered bg-black text-white">
-					go to store
+					
 				</button>
 				</Link>
+				<Button
+					full
+					link='/home'
+					text={'go to store'}
+					customClass=""
+				
+				/>
 			</div>
 		</div>
 	);

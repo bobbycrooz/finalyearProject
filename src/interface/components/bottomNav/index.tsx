@@ -131,7 +131,7 @@ const BottomNav = () => {
 						{item.icon(currentRoute === item.link)}
 						<h1
 							className={`${
-								currentRoute === item.link && 'text-[#6610F2]'
+								currentRoute === item.link ? 'text-[#b45309]' : "text-neutral-600"
 							} name  text-xs mt-1 font-std-book`}
 						>
 							{item.name}

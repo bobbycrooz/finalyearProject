@@ -79,7 +79,7 @@ const Category = () => {
 
 			{/* PAGE HEADER */}
 			<div className="section-card">
-				<h1 className="w-full header-big text-center font-std-medium capitalize">{String(categorySearchValue) || "Categories"}</h1>
+				<h1 className="w-full  text-center font-std-medium tn-6 capitalize">{String(categorySearchValue) || "Categories"}</h1>
 
 				{/* <p className="body w-full text-center">1-40 of 1000 results</p> */}
 			</div>

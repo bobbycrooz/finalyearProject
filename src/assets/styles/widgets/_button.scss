@@ -1,8 +1,7 @@
 .btn {
-	color: $body;
-	background-color: $blue;
 	transition: all 0.4s linear;
-	@apply middle space-x-6;
+	@apply middle space-x-6 bg-gradient-to-b from-amber-500 to-amber-700 text-white font-std-book focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500;
+
 
 	&-full {
 		width: 100%;
@@ -16,25 +15,27 @@
 	}
 
 	&-ghost {
-		border: 1.5px solid $blue;
-		background-color: $body;
-		color: $blue;
+		border: 1.5px solid $secondary;
+		
+		color: $secondary;
 	}
 
 	&-pill {
 	}
 
 	&-plus {
-		background-color: $green;
+		background-color: $success;
 	}
 
 	&.loading {
 	}
+
+	
 }
 
 .btn-banner {
 	color: $black;
-	background-color: $yellow;
+	background-color: $warning;
 	transition: all 0.4s linear;
 	@apply px-5 p-1 rounded-md text-sm mt-3;
 }
