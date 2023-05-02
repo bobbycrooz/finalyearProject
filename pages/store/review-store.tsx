@@ -26,6 +26,7 @@ import Link from 'next/link';
 import { useStores } from '@contexts/storeContext';
 import { useAuth } from '@contexts/authContext';
 import SectionLoader from '@components/SectionLoader';
+import { useRouter } from 'next/router';
 
 let tempArry: any[] = [];
 
@@ -35,32 +36,53 @@ const StoreReview = () => {
 	const [isFlash, setIsFlash] = useState(false);
 	const [isAvailable, setIsAvalable] = useState(false);
 	const [newProductDetails, setNewProDetails] = useState<{ [key: string]: any }>({});
+	const [currentStore, setCurrentStore] = useState<{ [key: string]: any }>({});
 	// const [storeProducts, setStoreProducts] = useState([]);
 	const { loggedInUser } = useAuth();
+	const { query } = useRouter();
 
-	const { setProducts, products } = useProducts();
-	const { stores, fetchStoreProducts, storeProducts } = useStores();
+	// const { setProducts, products } = useProducts();
+	const { stores, userStores, fetchStoreProducts, storeProducts } = useStores();
 
-	console.log(stores, 'this is the store from db');
+	// console.log(stores, 'this is the store from db');
 
 	async function getStorePro() {
-		await fetchStoreProducts(stores[0]?.storeId);
+		if (query?.storeId) {
+			await fetchStoreProducts(query?.storeId);
+		} else {
+			await fetchStoreProducts(stores[0]?.storeId);
+		}
+	}
+
+	async function getCurrentStore() {
+		if (query?.storeId) {
+			const currentStore = stores.find(
+				(store: { storeId: string | string[] | undefined }) => store.storeId === query?.storeId
+			);
+			setCurrentStore(currentStore);
+		} else {
+			setCurrentStore(stores[0]);
+		}
 	}
 
 	useEffect(() => {
+		getCurrentStore()
 		getStorePro();
 	}, []);
+
+
+	
 
 	return (
 		<div className="bg-gray-50 add_new  w-screen h-screen relative ">
 			<SEO title="Store overview" />
 
-			{stores?.length === 0 ? (
+			{!currentStore?._id ? (
 				<div className="h-screen bg-red-50  ">
 					<div className="section-card centered flex flex-col ">
 						<p className="name text-gray-600 font-std-medium  ">You dont have a store yet</p>
 
-						<Link href={'/store/new-store'}>
+						<Link href={'/store'}>
 							<div className="add_btn middle space-x-2 border-red-400 p-2 rounded-sm px-4 bg-red-400 text-red-50 mt-3">
 								<div className="plus ">
 									<BiStore className="text-red-50 font-std-book" />
@@ -74,12 +96,12 @@ const StoreReview = () => {
 				<div className="page_content w-full px-4 mt-[80px]">
 					<div className="store_banner w-full h-[100px] bg-red-300 relative">
 						<div className="store_banner w-full h-full ">
-							<Image src={stores[0].cover[0]} layout={'fill'} alt="store banner" />
+							<Image src={currentStore.cover[0]} layout={'fill'} alt="store banner" />
 						</div>
 
 						<div className="avatar absolute -bottom-1/2 left-6 bg-gray-50 rounded-full w-24 h-24 p-2">
 							<div className="w-full h-full bg-red-300 text-2xl rounded-full centered text-red-50 capitalize">
-								{stores[0].name.slice(0, 2) + '.'}
+								{currentStore.name.slice(0, 2) + '.'}
 							</div>
 						</div>
 					</div>
@@ -88,12 +110,12 @@ const StoreReview = () => {
 							<p></p>
 							<p className="name text-gray-500 font-std-book capitalize text-sm">
 								{' '}
-								<span className="text-gray-300">category:</span> {stores[0].category}
+								<span className="text-gray-300">category:</span> {currentStore.category}
 							</p>
 						</div>
 						<div className="info_box text-right">
 							<p className="name text-gray-600 font-std-medium capitalize text-xl">
-								{stores[0].name}
+								{currentStore.name}
 							</p>
 							<p className="name text-gray-500 font-std-book capitalize text-sm">
 								{' '}
@@ -105,7 +127,7 @@ const StoreReview = () => {
 					<div className="section-card mt-3">
 						<h1 className="capitalize  font-std-medium text-gray-300">Description:</h1>
 						<hr className="w-full my-2" />
-						<p className=" font-std-book text-gray-500">{stores[0].description}</p>
+						<p className=" font-std-book text-gray-500">{currentStore.description}</p>
 					</div>
 
 					<div className=" mt-4">
@@ -114,7 +136,7 @@ const StoreReview = () => {
 
 							{/* <Button text={'Add'} ghost /> */}
 
-							<Link href={`/store/add-new?id=${stores[0].storeId}`}>
+							<Link href={`/store/add-new?id=${currentStore.storeId}`}>
 								<div className="add_btn middle space-x-2 border-red-400 p-2 rounded-sm px-4 bg-red-400 text-red-50">
 									<div className="plus ">
 										<BiPlus className="text-red-50 font-std-book" />
@@ -133,7 +155,7 @@ const StoreReview = () => {
 						</div>
 					</div>
 
-					<div className="button_group middle w-full  justify-between mt-4 fixed bottom-[80px] left-0 p-2">
+					<div className="button_group middle w-full z-[100] justify-between mt-4 fixed bottom-[80px] left-0 p-2">
 						<Link href={`/store/new-store`}>
 							<div className="add_btn middle space-x-2 border border-red-400 w-full centered p-2 rounded-sm px-4 bg-red-50 text-red-400">
 								<div className="plus ">
@@ -145,8 +167,7 @@ const StoreReview = () => {
 
 						<div className="w-2"></div>
 
-
-						<Link href={`/store/new-store?id=${stores[0].storeId}`}>
+						<Link href={`/store/new-store?id=${currentStore.storeId}`}>
 							<div className="add_btn middle space-x-2 border border-red-400 p-2 w-full centered rounded-sm px-4 bg-red-400 text-red-50">
 								<div className="plus ">
 									<BiPencil className="text-red-50 font-std-book" />
@@ -154,7 +175,6 @@ const StoreReview = () => {
 								<button className="add text-xs">Update store</button>
 							</div>
 						</Link>
-
 					</div>
 				</div>
 			)}

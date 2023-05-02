@@ -14,6 +14,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
+import { useStores } from '@contexts/storeContext';
+import SectionLoader from '@components/SectionLoader';
+import { BiCaretRight, BiChevronRight } from 'react-icons/bi';
+import { useRouter } from 'next/router';
+
 const flashSales = [
 	{
 		name: 'New age',
@@ -41,43 +46,65 @@ const flashSales = [
 ];
 
 const FlashSales = () => {
+	const { stores, fetchStoreProducts, storeProducts } = useStores();
+	const { push } = useRouter();
+
+	console.log(stores, 'this is the store from collection conponent');
+
+	function storeHandleer(storeId: string) {
+		push({
+			pathname: '/store/review-store',
+
+			query: {
+				storeId
+			}
+		});
+	}
+
 	return (
 		<div className=" w-full py-1 my-4">
 			<div className="row flex justify-between  px-2 rounded-t-md">
-				<h1 className="capitalze text-neutral-600 font-std-medium">Best selling</h1>
+				<h1 className="capitalze text-neutral-600 font-std-medium">Available stores</h1>
 				<h1 className="capitalze underline text-amber-700 text-xs">view more</h1>
 			</div>
 
 			<div className="carousel-section  flash-sales-carousel mt-4">
-				<Swiper
-					modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay, EffectFade]}
-					spaceBetween={10}
-					slidesPerView={2.5}
-					loop={true}
-					autoplay={{
-						delay: 2000,
-						disableOnInteraction: false
-					}}
-					// onSwiper={(swiper) => console.log(swiper)}
-					// onSlideChange={() => console.log('slide change')}
-					tag={'div'}
-				>
-					{flashSales.map((item, index) => (
-						<SwiperSlide
-							key={index + 'yter'}
-							className={`brand_card rounded-md shadow ${item.class}`}
-						>
-							<div className="brand_card-text p-2">
-								<Text text={item.name} customClass="text-md text-body" />
+				{stores.length > 0 ? (
+					<Swiper
+						modules={[Autoplay]}
+						spaceBetween={10}
+						slidesPerView={2.5}
+						loop={true}
+						autoplay={{
+							delay: 2000,
+							disableOnInteraction: false
+						}}
+						// onSwiper={(swiper) => console.log(swiper)}
+						// onSlideChange={() => console.log('slide change')}
+						tag={'div'}
+					>
+						{/* @ts-ignore */}
+						{stores?.map((item, index) => (
+							<SwiperSlide
+								key={index + 'yter'}
+								onClick={() => storeHandleer(item.storeId)} 
+								className={`brand_card rounded-md shadow bg-white ${item.class} relative`}
+							>
+								<Image src={item.cover[0]} alt="" layout="fill" />
 
-								<Text
-									text={`${item.countLeft} new items`}
-									customClass="text-xs text-body"
-								/>
-							</div>
-						</SwiperSlide>
-					))}
-				</Swiper>
+								<div className="brand_card-text p-2 middle justify-between">
+									<h1 className="capitalze text-neutral-50 font-std-book text-xs">
+										{item.name}
+									</h1>
+
+									<BiChevronRight className=" text-neutral-50 font-std-medium" />
+								</div>
+							</SwiperSlide>
+						))}
+					</Swiper>
+				) : (
+					<SectionLoader />
+				)}
 			</div>
 		</div>
 	);

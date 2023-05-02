@@ -27,17 +27,11 @@ const Orders = () => {
 	const [currentOrderItem, setCurrentOrderItem] = React.useState({});
 	
 	const OrderId = query.id as string;
-	console.log(OrderId);
 
 	function filterOrderList(id: string) {
-		console.log('started filtering', orderList.length, 'no of array to search');
-
-		console.log('here is the key value', id);
-
-		console.log('here is the Aray to search', orderList);
+	
 
 		const orderDetals = orderList.filter((item: { _id: string | string[] }) => item._id === OrderId)[0];
-		console.log(orderDetals, 'came back from seearch');
 		setCurrentOrderItem(orderDetals);
 	}
 
@@ -45,7 +39,6 @@ const Orders = () => {
 		filterOrderList(OrderId);
 	}, []);
 
-	console.log(currentOrderItem, 'this is the currentOrderitem');
 
 	return (
 		<div className="bg-admin w-screen relative">

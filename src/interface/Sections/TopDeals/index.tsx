@@ -28,8 +28,7 @@ const TopDeals = () => {
 	const { products } = useProducts();
 	const [topDeals, setTopDeals] = useState<Array<any>>([]);
 
-	console.log(topDeals);
-	console.log(products, "products --");
+	
 	
 
 	function Img(str: any) {
@@ -72,7 +71,7 @@ const TopDeals = () => {
 						tag={'div'}
 					>
 						{topDeals?.map((item, index) => (
-							<SwiperSlide key={index + 'yter'} className="rounded-md shadow  relative">
+							<SwiperSlide key={index + 'yter'} className="rounded-md shadow  bg-white relative">
 								<Link href={`/product?id=${item._id}`}>
 									<div>
 										{/* DISCOUNT TAG */}

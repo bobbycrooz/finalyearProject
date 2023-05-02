@@ -22,7 +22,6 @@ function fmtResponse(responseData: any, error: boolean) {
 	}
 }
 
-console.log(process.env.NEXT_PUBLIC_BASE_LINK, process.env.NEXT_PUBLIC_NODE_ENV);
 
 const service = axios.create({
 	baseURL: process.env.NEXT_PUBLIC_NODE_ENV === 'development' ? `http://localhost:3007` : process.env.NEXT_PUBLIC_BASE_LINK,
@@ -49,7 +48,6 @@ service.interceptors.request.use(
 	},
 
 	(error) => {
-		console.log('this error came from axio request error', error);
 
 		return Promise.reject(error);
 	}

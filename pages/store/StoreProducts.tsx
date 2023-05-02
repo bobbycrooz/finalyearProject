@@ -30,7 +30,6 @@ import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from 
 // }
 
 const StoreProducts = ({ storeProducts }: { storeProducts?: any }) => {
-	console.log(storeProducts, "-----------------");
 
 	function Img(str: any) {
 		let thumbnail = str[0];
@@ -58,7 +57,7 @@ const StoreProducts = ({ storeProducts }: { storeProducts?: any }) => {
 						) => (
 							<SwiperSlide
 								key={index + 'yter'}
-								className="rounded-md shadow border border-red-100 bg-red-50"
+								className="rounded-md shadow border border-red-100 bg-white"
 							>
 								<Link href={`/product?=${item?._id}`}>
 									<div>
@@ -85,18 +84,18 @@ const StoreProducts = ({ storeProducts }: { storeProducts?: any }) => {
 										</div>
 
 										<div className="product-details p-2">
-											<Text text={item.name} />
+											<Text text={item.name} caps/>
 											<div className="price-row flex items-center ">
 												<h1 className="text-blue text-sm">
-													{item.price}
+													{item.initialPrice}
 												</h1>
 
-												<p className="text-gray original-price text-xs ml-3">
-													{item.initialPrice}
+												<p className="text-neutral-500 original-price text-xs ml-3">
+													{item.price}
 												</p>
 											</div>
 
-											<Text text={`5 items left`} />
+											{/* <Text text={`5 items left`} type='body' customClass='text-xs' /> */}
 										</div>
 									</div>
 								</Link>

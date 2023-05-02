@@ -65,7 +65,7 @@
 	.menu_sidebar {
 		width: 85%;
 		height: 100vh;
-		@apply flex flex-col items-start justify-start bg-blue-500 px-6 relative;
+		@apply flex flex-col items-start justify-start bg-gradient-to-b from-amber-400 to-amber-700 px-6 relative;
 
 		.content {
 			width: 100%;
@@ -99,11 +99,11 @@
 
 					&.active,
 					&:hover {
-						background-color: #772af4;
+						background-color: #d97706;
 					}
 
 					&-text {
-						@apply font-std-medium text-xl
+						@apply font-std-book text-xl text-black
                      capitalize ml-2;
 					}
 				}

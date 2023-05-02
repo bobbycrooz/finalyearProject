@@ -57,11 +57,9 @@ const AdminProducts: NextPage = () => {
 
 	function updateImage(res: { filesUploaded: { url: any }[] }) {
 		const imageLink = res.filesUploaded[0].url;
-		console.log(tempArry, 'the array before pushing');
 
 		tempArry.push(imageLink);
 
-		console.log(tempArry, 'the array after pushing');
 
 		setNewProDetails({
 			...newProductDetails,
@@ -74,7 +72,6 @@ const AdminProducts: NextPage = () => {
 	async function submitProduct() {
 		// @ts-ignore
 		const { serverResponse, error } = await createNewProduct(newProductDetails);
-		console.log(serverResponse, error, 'reasonable response');
 	}
 
 	return (

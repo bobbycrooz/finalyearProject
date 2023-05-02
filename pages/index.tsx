@@ -11,12 +11,11 @@ import Link from 'next/link';
 
 const Home = (props: { isMobile: any }) => {
 	const { user, setUser } = useAuth();
-	console.log('this the root application', user);
 
 	// TODO: to be changes to landing page
 
 	return (
-		<div className=" h-screen w-screen relative  bg-amber-600">
+		<div className=" h-screen w-screen relative  bg-neutral-100">
 			<SEO title="home" />
 
 			{/* <div className="home px-4 ">
@@ -27,11 +26,7 @@ const Home = (props: { isMobile: any }) => {
 			</div> */}
 
 			<div className="absolute  bottom-11 w-full px-4">
-				<Link href={'/home'}>
-				<button className="w-full rounded-md capitalize p-2 centered bg-black text-white">
-					
-				</button>
-				</Link>
+				
 				<Button
 					full
 					link='/home'

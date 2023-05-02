@@ -25,6 +25,9 @@ import React from 'react';
 import { UserTypes } from '@types';
 import { useCarts } from '@contexts/cartContext';
 import { useOrders } from '@contexts/OrderContext';
+import { AiOutlineUser } from 'react-icons/ai';
+import { GrUserAdmin } from 'react-icons/gr';
+import { BiCart, BiLogOut, BiPurchaseTag, BiStore } from 'react-icons/bi';
 
 interface PropsTypes {
 	visibility?: boolean;
@@ -35,37 +38,37 @@ const navList = [
 	{
 		name: 'profie',
 		link: '/user',
-		icon: userIcon
+		icon: <AiOutlineUser className="text-xl text-black" />
 	},
 
 	{
-		name: 'notifications',
-		link: '/notifications',
-		icon: notiIcon
+		name: 'My store',
+		link: '/store/review-store',
+		icon: <BiStore className="text-xl text-black" />
 	},
 
 	{
 		name: 'cart',
 		link: '/cart',
-		icon: cartIcon
+		icon: <BiCart className="text-xl text-black" />
 	},
 
 	{
-		name: 'settings',
-		link: '/settings',
-		icon: settingsIcon
+		name: 'orders',
+		link: '/orders',
+		icon: <BiPurchaseTag className="text-xl text-black" />
 	},
 
 	{
 		name: 'Admin',
 		link: '/admin',
-		icon: adminIcon
+		icon: <GrUserAdmin/>
 	},
 
 	{
 		name: 'Sign out',
 		link: '/',
-		icon: signUpIcon
+		icon: <BiLogOut className="text-xl text-black" />
 	}
 ];
 
@@ -77,7 +80,7 @@ const Menu = forwardRef(({ visibility, menuHandler }: PropsTypes, ref) => {
 	const { setLogedInUser } = useAuth();
 	function logOut() {
 		console.log('signin out');
-		
+
 		let removeToken = utils.removeToken();
 
 		localStorage.clear();
@@ -94,7 +97,6 @@ const Menu = forwardRef(({ visibility, menuHandler }: PropsTypes, ref) => {
 
 			return push('/auth');
 		}
-		
 	}
 
 	React.useEffect(() => {
@@ -141,13 +143,7 @@ const Menu = forwardRef(({ visibility, menuHandler }: PropsTypes, ref) => {
 										item.link === '/profile' && 'active'
 									} nav_list-item flex items-center p-3  `}
 								>
-									<Image
-										alt=""
-										className=""
-										src={item.icon}
-										height={24}
-										width={24}
-									/>
+								{item.icon}
 									<h1 className="nav_list-item-text ">{item.name}</h1>
 								</li>
 							) : (
@@ -157,13 +153,7 @@ const Menu = forwardRef(({ visibility, menuHandler }: PropsTypes, ref) => {
 											item.link === '/profile' && 'active'
 										} nav_list-item flex items-center p-3  `}
 									>
-										<Image
-											alt=""
-											className=""
-											src={item.icon}
-											height={24}
-											width={24}
-										/>
+										{item.icon}
 										<h1 className="nav_list-item-text ">{item.name}</h1>
 									</li>
 								</Link>

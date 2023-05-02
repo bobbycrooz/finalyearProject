@@ -64,7 +64,7 @@ const NewArrival = () => {
 					<Swiper
 						// install Swiper modules
 						modules={[Navigation, Pagination, Scrollbar, FreeMode, Autoplay, EffectFade]}
-						spaceBetween={10}
+						spaceBetween={5}
 						slidesPerView={3.5}
 						freeMode={true}
 						// effect="fade"
@@ -81,7 +81,7 @@ const NewArrival = () => {
 						tag={'div'}
 					>
 						{newArrivalProducts?.map((item, index) => (
-							<SwiperSlide key={index + 'yter'} className="rounded-md shadow ">
+							<SwiperSlide key={index + 'yter'} className="rounded-md shadow  bg-white">
 								<Link href={`/product?id=${item._id}`}>
 									<>
 										<div className="centered  p-2 product-image-box ">

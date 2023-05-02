@@ -141,7 +141,7 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 			{/* PRODUCT CAROUSEL */}
 
 			{products.length > 0  ? (
-				<div className="carousel-section  flash-sales-carousel mt-2 br">
+				<div className="carousel-section  flash-sales-carousel mt-2">
 					<Swiper
 						modules={[Navigation, Pagination, Scrollbar, EffectFade]}
 						spaceBetween={10}
@@ -155,7 +155,7 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 					>
 						{/* @ts-ignore */}
 						{products.map((item, index) => (
-							<SwiperSlide key={index + 'yter'} className="rounded-md shadow  relative">
+							<SwiperSlide key={index + 'yter'} className="rounded-md shadow  bg-white relative">
 								<Link href={`/product?id=${item._id}`}>
 									<div>
 										{/* PRODUCT IMAGE */}
@@ -219,7 +219,7 @@ const BestSellingProduct = ({ title, data }: { title?: string; data: [] }) => {
 					tag={'div'}
 				>
 					{ProductsCategory.map((item, index) => (
-						<SwiperSlide key={index + 'yter'} className="rounded-md shadow  relative">
+						<SwiperSlide key={index + 'yter'} className="rounded-md shadow bg-white relative">
 							<Link href={`/categories?cat=${item.name}`}>
 								<div>
 									{/* PRODUCT IMAGE */}

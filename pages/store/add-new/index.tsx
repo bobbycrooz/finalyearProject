@@ -69,11 +69,9 @@ const AdminProducts: NextPage = () => {
 
 	function updateImage(res: { filesUploaded: { url: any }[] }) {
 		const imageLink = res.filesUploaded[0].url;
-		console.log(tempArry, 'the array before pushing');
 
 		tempArry.push(imageLink);
 
-		console.log(tempArry, 'the array after pushing');
 
 		setNewProDetails({
 			...newProductDetails,
@@ -96,7 +94,6 @@ const AdminProducts: NextPage = () => {
 		// @ts-ignore
 		const { serverResponse, error } = await createNewProduct(newProductDetails);
 		// console.log(newProductDetails, currentStoreDetails, '----reasonable response');
-		console.log(serverResponse, "---------------")
 		setIsLoading(false)
 
 	}
@@ -115,7 +112,6 @@ const AdminProducts: NextPage = () => {
 			storeId: currentStore[0].storeId
 		});
 
-		console.log(query.id, currentStore);
 	}
 
 	useEffect(() => {

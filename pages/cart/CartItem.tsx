@@ -11,11 +11,11 @@ import { useCarts } from '@contexts/cartContext';
 function CartItem({ item }: { item: any; updateCartItem: any }) {
 	const [updating, setUpdatting] = React.useState(false);
 	// const cartRef = useRef();
-	const [qtty, setQtty] = React.useState(1);
+	const [baseQtty, setQtty] = React.useState(1);
 	const { updateCartItem } = useCarts();
 	// function currentItemCount(id: string) {}
 
-	function QttyChangeHandler(e: any, qtty: number) {
+	function QttyChangeHandler(e: any, qtty: number = baseQtty) {
 		setUpdatting(true);
 		setQtty(e.target.value);
 	}
@@ -33,7 +33,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 		return String(thumbnail);
 	}
 	
-	console.log(item, " -------");
+	console.log(item?.imageUrl[0], " -------");
 	
 
 	return (
@@ -42,10 +42,10 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 				{/* ITEM DETAILS */}
 				<div className="row flex items-start h-[100px] ">
 					<div className="item_image relative h-full w-1/2 ">
-					{/* {item?.imageUrl[0] !== undefined ? (
+					{item?.imageUrl[0] !== undefined ? (
 												<Image
 													alt=""
-													src={Img(item.imageUrl)}
+													src={Img(item.imageUrl[0])}
 													height={80}
 													width={70}
 													layout="intrinsic"
@@ -59,20 +59,20 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 													layout="intrinsic"
 													className="br"
 												/>
-											)} */}
-												<Image
+											)}
+												{/* <Image
 													alt=""
 													src={'/products/watch1.webp'}
 													// height={80}
 													// width={70}
 													layout="fill"
 													className="br"
-												/>
+												/> */}
 					</div>
 
 					<div className="item_details">
 						<h1 className="text-lg font-std-medium text-left capitalize">
-							{item?.productID.name}
+							{item?.productID?.name}
 						</h1>
 
 						<p className="text-sm font-std-book capitalize">
@@ -109,7 +109,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 					</button>
 					</Link>
 					<div className="space w-4"></div>
-					<button className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
+					<button onClick={() => submitValue(item?.prodctID?._id, 0)} className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2">
 						<Buttt />
 						<p>remove</p>
 					</button>

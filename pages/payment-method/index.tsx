@@ -31,18 +31,15 @@ const PaymentMethod = () => {
 	async function addOrderOption() {
 		setLoading(true);
 
-		console.log(orderList.length, 'this is the count before creation');
 
 		onChangeOrderObject(payMethod, 'paymentMethod');
 
 		const OrderId = await generateSummary();
 
-		console.log(OrderId, orderList);
 
 		if (typeof OrderId == 'string') {
 			setLoading(false);
-			console.log('this is the order list while calling summary', orderList);
-			console.log(orderList.length, 'this is the count after creation');
+		
 
 			router.push(`/orders/summary?id=${OrderId}`);
 		} else {

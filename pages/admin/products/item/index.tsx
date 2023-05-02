@@ -41,23 +41,18 @@ const AdminProducts: NextPage = () => {
 	const [isOn, setIsOn] = React.useState(false);
 	const router = useRouter();
 
-	console.log(products);
 
 	function getProductDetailsFromStore() {
 		const { query } = router;
-		console.log(query.id);
 
 		let Product = products.filter((item: { _id: string }) => item._id === String(query.id));
-		console.log(Product);
 
 		setCurrentProduct(Product[0]);
 	}
 
-	console.log(currentProduct, 'before useEffect');
 
 	useEffect(() => {
 		getProductDetailsFromStore();
-		console.log(currentProduct, 'after useEffect');
 	}, []);
 
 	return (

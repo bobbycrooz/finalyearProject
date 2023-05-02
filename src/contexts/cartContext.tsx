@@ -54,10 +54,10 @@ const CartProvider = ({ children }: any) => {
 		if (!error) {
 			// console.log(data);
 			setCartItems(data);
-			return true
+			return true;
 		}
 
-		return false
+		return false;
 	}
 
 	// updateCart
@@ -66,7 +66,9 @@ const CartProvider = ({ children }: any) => {
 	}
 
 	useEffect(() => {
-		// getUserCartItem();
+		if (loggedInUser) {
+			getUserCartItem();
+		}
 
 		console.log('i fected user cart by default from the context useEffect');
 	}, [getUserCartItem, loggedInUser]);

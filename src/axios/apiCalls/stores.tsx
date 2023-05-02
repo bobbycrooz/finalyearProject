@@ -30,6 +30,15 @@ export function getStoreProducts(storeUuid: any) {
 export function getUsersStores() {
 
 	return service({
+		url: `/v1/store/user`,
+		method: 'get',
+	
+	});
+}
+
+export function getAllStores() {
+
+	return service({
 		url: `/v1/store`,
 		method: 'get',
 	

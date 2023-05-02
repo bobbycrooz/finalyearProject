@@ -161,6 +161,7 @@ const Home = () => {
 			</div>
 
 		
+		{/* STORES */}
 
 			<div className="collections">
 				<Collections />

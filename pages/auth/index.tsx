@@ -68,7 +68,6 @@ const Auth: NextPage = () => {
 			// @ts-ignore
 			const { serverResponse, error } = await creatUser(user);
 
-			console.log(serverResponse, 'this is the srve ----', error);
 
 			if (error) {
 				seIsLoading(!true);
@@ -86,7 +85,6 @@ const Auth: NextPage = () => {
 			// @ts-ignore
 			const { serverResponse, error } = await userLogin(user);
 
-			console.log(serverResponse, 'this is the srve ----', error);
 
 			if (error) {
 				seIsLoading(!true);

@@ -1,4 +1,4 @@
-import { getStoreProducts, getUsersStores } from '@axios/stores';
+import { getAllStores, getStoreProducts, getUsersStores } from '@axios/stores';
 import { ProductTypes } from '@types';
 import React, { useContext, useState, useEffect, useMemo, createContext, Children, useCallback } from 'react';
 import cartJson from '../../cart.json';
@@ -16,6 +16,7 @@ export const useStores = () => {
 const StoreProvider = ({ children }: any) => {
 	const [storeProducts, setStoreProducts] = useState<any>([]);
 	const [stores, setStores] = useState<any>([]);
+	const [userStores, setUserStores] = useState<any>([]);
 	const { loggedInUser } = useAuth();
 
 	// console.log();
@@ -41,11 +42,26 @@ const StoreProvider = ({ children }: any) => {
 		}
 	}, []);
 
-	// getCart
-	// async function getUserCartItem() {
-	// };
 
-	// updateCart
+
+	// all stores
+	async function fetchAllStore() {
+		const {
+			// @ts-ignore
+			error,
+			// @ts-ignore
+			serverResponse: { data }
+		} = await getAllStores();
+
+		if (!error) {
+			console.log('All store aqcuired --');
+			setStores(data);
+			return true;
+		}
+
+	};
+
+	// all users specific store
 	async function fetctStore() {
 		const {
 			// @ts-ignore
@@ -56,7 +72,7 @@ const StoreProvider = ({ children }: any) => {
 
 		if (!error) {
 			// console.log(data);
-			setStores(data);
+			setUserStores(data);
 			return true;
 		}
 
@@ -71,11 +87,11 @@ const StoreProvider = ({ children }: any) => {
 
 	useEffect(() => {
 		fetctStore();
-
+		fetchAllStore()
 		console.log('i fected user cart by default from the context useEffect');
 	}, [loggedInUser]);
 
-	return <StoreContext.Provider value={{ fetchStoreProducts, stores, storeProducts }}>{children}</StoreContext.Provider>;
+	return <StoreContext.Provider value={{ fetchStoreProducts, stores, userStores, storeProducts }}>{children}</StoreContext.Provider>;
 };
 
 export default StoreProvider;

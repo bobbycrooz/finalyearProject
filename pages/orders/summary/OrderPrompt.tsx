@@ -27,7 +27,6 @@ const OrderPrompt = ({ visibility, back, item }: PropsTypes) => {
 	const [val, setVal] = useState(false);
 	const { placeOrder } = useOrders();
 	const { setCartItems } = useCarts();
-	console.log(val);
 	const router = useRouter();
 
 	async function initiateOrder(id: string) {

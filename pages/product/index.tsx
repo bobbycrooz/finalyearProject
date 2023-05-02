@@ -56,7 +56,6 @@ const Mycart = () => {
 		}
 	}
 
-	console.log(currentProduct?._id);
 
 	useEffect(() => {
 		fetchProductDetails(String(query.id));

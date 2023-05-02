@@ -38,7 +38,6 @@ const Orders = () => {
 		});
 	}
 
-	console.log(newUserDetails);
 
 	// function toggleHandler(fieldName: string) {
 
@@ -58,7 +57,6 @@ const Orders = () => {
 
 		if (!error) {
 			// setuserdetails to new return user details
-			console.log(data);
 
 			if (ls.localGet(USER_TEMP || USER)) {
 				localStorage.clear();

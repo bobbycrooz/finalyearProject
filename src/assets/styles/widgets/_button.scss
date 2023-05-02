@@ -15,9 +15,10 @@
 	}
 
 	&-ghost {
-		border: 1.5px solid $secondary;
+		background-color: white !important;
 		
-		color: $secondary;
+
+		@apply border border-amber-600 text-amber-600 bg-gradient-to-b from-white to-white;
 	}
 
 	&-pill {
