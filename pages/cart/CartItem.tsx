@@ -33,7 +33,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 		return String(thumbnail);
 	}
 
-	// console.log(, " -------");
+	
 
 	return (
 		<>
@@ -113,7 +113,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 					</Link>
 					<div className="space w-4"></div>
 					<button
-						onClick={() => submitValue(item?.prodctID?._id, 0)}
+						onClick={() => submitValue(item?.productID?._id, 0)}
 						className="border rounded text-gray middle px-3 p-2 w-full capitalize centered space-x-2"
 					>
 						<Buttt />
