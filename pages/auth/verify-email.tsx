@@ -6,13 +6,14 @@ import Button from '@widget/Button';
 import Text from '@widget/Text';
 import InputField from '@widget/InputField';
 import emailIcon from '@images/emailIcon.svg';
+import { AiTwotoneMail } from 'react-icons/ai';
 
 const VerifyEmail: NextPage = () => {
 
 	return (
 		<>
 			{' '}
-			<div className="bg-body  h-screen w-screen relative px-4">
+			<div className="h-screen w-screen relative px-4">
 				<SEO title="home" />
 
 				<div className="logo mx-auto centered  mt-20">
@@ -33,7 +34,7 @@ const VerifyEmail: NextPage = () => {
 					</div>
 
 					<InputField
-						icon={emailIcon}
+						icon={<AiTwotoneMail className='text-amber-600 text-xl' />}
 						label="Email"
 						type="email"
 						placeholder="eg.bobby@gmail.com"

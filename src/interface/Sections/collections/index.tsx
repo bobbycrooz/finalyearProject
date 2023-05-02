@@ -43,8 +43,9 @@ const flashSales = [
 const FlashSales = () => {
 	return (
 		<div className=" w-full py-1 my-4">
-			<div className="row flex justify-between">
-				<Text type="title" customClass="" text="Brand collection" />
+			<div className="row flex justify-between  px-2 rounded-t-md">
+				<h1 className="capitalze text-neutral-600 font-std-medium">Best selling</h1>
+				<h1 className="capitalze underline text-amber-700 text-xs">view more</h1>
 			</div>
 
 			<div className="carousel-section  flash-sales-carousel mt-4">
