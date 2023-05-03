@@ -74,9 +74,19 @@ const Mycart = () => {
 			{/*  */}
 
 			<div className="section-card  bg-green-400 flex flex-col stack">
-				<h1 className="text-sm w-full text-center text-gray-400">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet quo reiciendis
-					cupiditate possimus magni earum enim laboriosam volu
+				<h1 className="text-sm w-full text-left text-gray-600">
+					 Creating a store is the key to selling your products online. With a dedicated store
+					page,
+				</h1>
+
+				<h1 className="text-sm w-full text-left text-gray-600">
+					you can showcase your brand and products to potential customers, build credibility, and
+					increase sales.
+				</h1>
+
+				<h1 className="text-sm w-full text-left text-gray-600">
+					Don &apos; t miss out on the opportunity to reach a wider audience and grow your business
+					with a personalized online store.
 				</h1>
 
 				<Link href={'/store/new-store'}>

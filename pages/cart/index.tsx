@@ -39,6 +39,9 @@ const Mycart = () => {
 	
 	*/
 
+	console.log(cartitems);
+	
+
 	return (
 		<div className="bg-gray-100 cart_list_page  w-screen h-screen relative">
 			<SEO title="cart" />
@@ -48,7 +51,7 @@ const Mycart = () => {
 
 			{/* CART SECTION */}
 			<div className="w-full px-2 space-y-3">
-				{!!cartitems?.items ? (
+				{cartitems?.items?.length > 0 ? (
 					<div className="carts space-y-3">
 						{cartitems.items
 							.map((item: any, idex: React.Key | null | undefined) => (

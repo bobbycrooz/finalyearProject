@@ -156,7 +156,7 @@ const StoreReview = () => {
 					</div>
 
 					<div className="button_group middle w-full z-[100] justify-between mt-4 fixed bottom-[80px] left-0 p-2">
-						<Link href={`/store/new-store`}>
+						<Link href={`/store`}>
 							<div className="add_btn middle space-x-2 border border-red-400 w-full centered p-2 rounded-sm px-4 bg-red-50 text-red-400">
 								<div className="plus ">
 									<BiStore className="text-red-400 font-std-book" />

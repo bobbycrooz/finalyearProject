@@ -77,9 +77,9 @@ const Carousel = () => {
 				{carouselArr.map((item, index) => (
 					<SwiperSlide key={index + 'yter'} className='second-advert-banner centered'>
 						
-						<h1 className="text-white mx-auto text-2xl font-std-book">
+						{/* <h1 className="text-white mx-auto text-2xl font-std-book">
 							Place you adds here
-						</h1>
+						</h1> */}
 					</SwiperSlide>
 				))}
 			</Swiper>

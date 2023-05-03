@@ -44,7 +44,7 @@ function CartItem({ item }: { item: any; updateCartItem: any }) {
 				<div className="row flex items-start h-[100px] ">
 					<div className="item_image relative h-full w-1/2  p-2">
 						<div className="w-full h-full">
-							{item?.productID?.imageUrl[0].length > 0 ? (
+							{item?.productID?.imageUrl?.length > 0 ? (
 								<Image
 									alt=""
 									src={Img(item?.productID?.imageUrl)}
