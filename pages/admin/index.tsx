@@ -159,7 +159,7 @@ const Admin: NextPage = () => {
 
 			<BottomNav />
 
-			<SoftLoader visibility={!true} />
+			
 		</div>
 	);
 };
