@@ -25,7 +25,7 @@ import Loader from '@components/loader';
 import SoftLoader from '@components/softLoader';
 
 const Admin: NextPage = () => {
-	const [setLoader, toggleLoader] = React.useState(true);
+	const [setLoader, toggleLoader] = React.useState(!true);
 
 	const overviewArray = [
 		{
