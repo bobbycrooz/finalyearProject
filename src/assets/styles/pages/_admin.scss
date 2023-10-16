@@ -27,7 +27,7 @@
 .product_list_page {
     .product_list_container {
         margin-top: 130px;
-        @apply h-auto py-4 bg-gray-400 rounded-md w-full;
+        @apply h-auto py-4  rounded-md w-full;
 
         .dotted-line {
             border: 0.5px dashed #7171714f;

@@ -154,7 +154,7 @@ const Home = () => {
 				<TopDeals />
 			</div>
 
-			{true && <NewArival />}
+			{/* {true && <NewArival />} */}
 
 			<div className="best-selling w-full px-4">
 				<Product data={products} />

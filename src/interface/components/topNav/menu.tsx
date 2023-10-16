@@ -55,7 +55,7 @@ const navList = [
 
 	{
 		name: 'orders',
-		link: '/orders',
+		link: '/admin',
 		icon: <BiPurchaseTag className="text-xl text-black" />
 	},
 

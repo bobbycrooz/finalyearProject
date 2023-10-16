@@ -90,7 +90,7 @@ const FlashSales = () => {
 								onClick={() => storeHandleer(item.storeId)} 
 								className={`brand_card rounded-md shadow bg-white ${item.class} relative`}
 							>
-								<Image src={item.cover[0]} alt="" layout="fill" />
+								{item.cover && <Image src={item?.cover[0]} alt="" layout="fill" />}
 
 								<div className="brand_card-text p-2 middle justify-between">
 									<h1 className="capitalze text-neutral-50 font-std-book text-xs">

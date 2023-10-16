@@ -96,7 +96,7 @@ const StoreReview = () => {
 				<div className="page_content w-full px-4 mt-[80px]">
 					<div className="store_banner w-full h-[100px] bg-red-300 relative">
 						<div className="store_banner w-full h-full ">
-							<Image src={currentStore.cover[0]} layout={'fill'} alt="store banner" />
+{currentStore.cover && <Image src={currentStore.cover[0]} layout={'fill'} alt="store banner" />}
 						</div>
 
 						<div className="avatar absolute -bottom-1/2 left-6 bg-gray-50 rounded-full w-24 h-24 p-2">

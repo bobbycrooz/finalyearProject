@@ -30,27 +30,27 @@ const Admin: NextPage = () => {
 	const overviewArray = [
 		{
 			cardName: 'total users',
-			count: 459
+			count: 0
 		},
 
 		{
 			cardName: 'total profits',
-			count: 459
+			count: 0
 		},
 
 		{
 			cardName: 'total orders',
-			count: 459
+			count: 0
 		},
 
 		{
 			cardName: 'total categories',
-			count: 459
+			count: 0
 		},
 
 		{
 			cardName: 'total products',
-			count: 459
+			count: 0
 		}
 	];
 
@@ -152,9 +152,9 @@ const Admin: NextPage = () => {
 					))}
 				</div>
 
-				<div className="graph-box">
+				{/* <div className="graph-box">
 					<Text text="graph component" customClass=" " />
-				</div>
+				</div> */}
 			</div>
 
 			<BottomNav />

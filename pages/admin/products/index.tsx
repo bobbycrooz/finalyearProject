@@ -25,14 +25,7 @@ const AdminProducts: NextPage = () => {
 		}
 	}
 
-	//   const calculation = useMemo(() => expensiveCalculation(count), [count]);
-
-	// useEffect(() => {.
-	// 	// fetchProducts();
-	// 	// console.log(datas);
-	// 	return
-
-	// }, []);
+	
 
 	return (
 		<div className="bg-admin product_list_page px-2 pb-20  w-screen relative">
@@ -62,7 +55,7 @@ const AdminProducts: NextPage = () => {
 								}}
 							>
 								<div>
-									<div className="px-2 my-2 product_item between  w-full h-[63px]">
+									<div className="px-2 my-2 product_item between  w-full p-4">
 										<div className="details-info flex">
 											<div className="product-image border p-1 w-[45px] h-[45px] border-gray centered rounded-md">
 												<Image

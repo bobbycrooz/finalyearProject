@@ -51,7 +51,7 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 	if (isAdminPage) {
 		return (
 			<>
-				<div className="top-nav px-6 ">
+				<div className="top-nav px-6 top-nav h-11  flex items-center space-x-6 mt-2">
 					{currentRouteName !== 'Overview' && (
 						<div className="centered" aria-label="open-menu" onClick={() => history.back()}>
 							<Image src={backArrow} alt="" height={16} width={20} />
@@ -69,11 +69,11 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 
 				{['products', 'users', 'orders'].includes(currentRouteName) && (
 					<div className="admin-mode-top-nav shadow px-3 h-[45px] w-full between bg-green">
-						<SearchBox context={'admin-products'} searchSetter={searchSetter} />
+						{/* <SearchBox context={'admin-products'} searchSetter={searchSetter} /> */}
 						<div className="button-group flex ">
-							<button className="border centered border-blue px-3 rounded-md text-blue ghost">
+							{/* <button className="border centered border-blue px-3 rounded-md text-blue ghost">
 								<Image src={filterIcon} alt="" height={20} width={20} />
-							</button>
+							</button> */}
 
 							<Button
 								text="Add"
@@ -148,8 +148,9 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 						</Link>
 					</div>
 				</div>
+
 				{/* SEARCH BOX CONTAINER */}
-				{showSearchComponent() && (
+				{/* {showSearchComponent() && (
 					<div className="row px-4 p-2 h-16 bg-white w-full centered ">
 						<SearchBox
 							searchSetter={function (value: React.SetStateAction<never[]>): void {
@@ -157,7 +158,7 @@ const TopNav = ({ context, searchSetter }: PropsTypes) => {
 							}}
 						/>
 					</div>
-				)}
+				)} */}
 				{/* MENU */}
 				<Menu ref={menuRef} menuHandler={menuHandler} visibility={openMenu} />
 			</div>

@@ -85,7 +85,7 @@ const Mycart = () => {
 				)}
 
 				{/* checkout section */}
-				{!!cartitems.items ? (
+				{!!cartitems?.items ? (
 					<div className="checkout_container ">
 						<Text type="title" text={`# ${cartitems.subTotal}`} />
 

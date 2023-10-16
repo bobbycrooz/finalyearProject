@@ -26,15 +26,12 @@ const AdminProducts: NextPage = () => {
 	const [isAvailable, setIsAvalable] = useState(false);
 	const [newProductDetails, setNewProDetails] = useState<{ [key: string]: any }>({});
 
-	// console.log(newProductDetails, showPicker);
 
 	// upload product details
 	function getDetails(e: { target: { value: string } }, fieldName: string) {
 		let fieldValue = e && e.target.value;
 
-		// if (errMsg) {
-		// 	return Notify('error', errMsg);
-		// }
+		
 		setNewProDetails({
 			...newProductDetails,
 			[fieldName]: fieldValue

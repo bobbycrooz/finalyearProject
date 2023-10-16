@@ -20,7 +20,7 @@ const StoreModal = ({ visibility, create, setShow, isLoading }: PropsTypes) => {
 	return (
 		<div className={`${visibility && 'active'} modal layer z-10`}>
 			<AnimatePresence>
-				<motion.div exit={{ opacity: 0 }} className="card-gesture z-10 px-4 pb-6 fadeIn ">
+				<motion.div exit={{ opacity: 0 }} className="card-gesture z-10 px-4 pb-6 fadeIn bg-white">
 					<div className="w-[30%] h-1 bg-[#CCCCCC] rounded mx-auto mt-2"></div>
 
 					<div className="mx-auto bg-gray w-1/2 h-[120px]   my-4 relative">
